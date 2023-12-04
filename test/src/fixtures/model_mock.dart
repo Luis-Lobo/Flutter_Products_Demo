@@ -1,11 +1,11 @@
-import 'package:flutter_products_demo/features/product/domain/product_model.dart';
-import 'package:flutter_products_demo/features/product/domain/rating_model.dart';
+import 'package:flutter_products_demo/features/products/domain/models/product_model.dart';
+import 'package:flutter_products_demo/features/products/domain/models/rating_model.dart';
 
 class ModelMock {
   static RatingModel get ratingModel =>
       const RatingModel(rate: 3.9, count: 120);
 
-  static ProductModel get productModel => ProductModel(
+  static ProductModel get productModel => const ProductModel(
         id: 1,
         title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
         price: 109.95,

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_products_demo/features/product/domain/rating_model.dart';
+import 'package:flutter_products_demo/features/products/domain/models/rating_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../../../fixtures/fixture_reader.dart';
 import '../../../../fixtures/model_mock.dart';
