@@ -1,5 +1,5 @@
-import 'package:flutter_products_demo/features/products/domain/models/product_model.dart';
-import 'package:flutter_products_demo/features/products/domain/models/rating_model.dart';
+import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
+import 'package:flutter_products_demo/src/features/products/domain/models/rating_model.dart';
 
 class ModelMock {
   static RatingModel get ratingModel =>

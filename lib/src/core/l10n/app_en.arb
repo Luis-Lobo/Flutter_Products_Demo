@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "name": "Name: ",
+    "category": "Category: ",
+    "description" : "Description: ",
+    "price": "Price: "
+}
