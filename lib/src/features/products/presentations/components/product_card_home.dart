@@ -3,11 +3,11 @@ import 'package:flutter_products_demo/src/features/products/domain/models/produc
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_text_info.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCardHome extends StatelessWidget {
   final ProductModel productModel;
   final GestureTapCallback? onTap;
 
-  const ProductCard({
+  const ProductCardHome({
     super.key,
     required this.productModel,
     required this.onTap,
@@ -29,10 +29,11 @@ class ProductCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: Text(
                   productModel.title,
+                  textAlign: TextAlign.center,
                   style: textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 24,
-                    color: Colors.blue,
+                    color: Colors.grey,
                   ),
                 )),
             Padding(
@@ -40,15 +41,17 @@ class ProductCard extends StatelessWidget {
               child: Image.network(
                 productModel.image,
                 height: 200,
-                width: 100,
+                width: 200,
                 fit: BoxFit.cover,
               ),
             ),
-            ProductTextInfo(title: l10n.category, data: productModel.category),
-            ProductTextInfo(
-                title: l10n.description, data: productModel.description),
-            ProductTextInfo(
-                title: l10n.price, data: productModel.price.toString()),
+            Center(
+              child: ProductTextInfo(
+                title: l10n.price,
+                data: productModel.price.toString(),
+                alignment: Alignment.center,
+              ),
+            ),
           ],
         ),
       ),

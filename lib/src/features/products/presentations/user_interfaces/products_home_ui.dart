@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/components/product_card.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_details.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_home.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/products_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductsHomeUI extends StatefulWidget {
   const ProductsHomeUI({super.key});
@@ -65,8 +67,8 @@ class _ProductsHomeUIState extends State<ProductsHomeUI> {
                           final product = state.products.elementAt(index);
                           return Padding(
                             padding: const EdgeInsets.only(top: 16),
-                            child: ProductCard(
-                                productModel: product, onTap: () => {}),
+                            child: ProductCardHome(
+                                productModel: product, onTap: () => context.go('/product_details', extra: product),),
                           );
                         },
                       ),

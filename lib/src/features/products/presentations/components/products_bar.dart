@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProductsBar extends StatelessWidget
-    implements PreferredSizeWidget {
+class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData icon;
   final String? title;
   final String? subtitle;
@@ -51,7 +50,7 @@ class ProductsBar extends StatelessWidget
                   subtitle ?? '',
                   textAlign: TextAlign.left,
                   style: textTheme.titleLarge?.copyWith(
-                    color: Colors.red,
+                    color: Colors.green,
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                   ),
@@ -63,8 +62,6 @@ class ProductsBar extends StatelessWidget
       ),
     );
   }
-
-
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
