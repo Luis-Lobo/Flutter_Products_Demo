@@ -23,7 +23,7 @@ void main() {
 
   test('Test Product Model fromJson method', () {
     final productModel = ProductModel.fromJson(
-      json: jsonDecode(
+     jsonDecode(
         fixture(name: 'product_model.json'),
       ),
     );

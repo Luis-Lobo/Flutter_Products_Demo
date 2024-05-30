@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_products_demo/src/features/products/domain/models/rating_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'product_model.g.dart';
@@ -23,8 +24,8 @@ class ProductModel extends Equatable {
   @JsonKey(name: 'image')
   final String image;
 
- // @JsonKey(name: 'rating')
- // final RatingModel rating;
+  @JsonKey(name: 'rating')
+  final RatingModel rating;
 
   const ProductModel({
     required this.id,
@@ -33,15 +34,13 @@ class ProductModel extends Equatable {
     required this.description,
     required this.category,
     required this.image,
-    //required this.rating,
+    required this.rating,
   });
 
-  factory ProductModel.fromJson(
-          {required Map<String, dynamic> json}) =>
-      _$ProductModelFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 
   @override
-  List<Object> get props => [id, title, price, description, category, image, /*rating*/];
+  List<Object> get props => [id, title, price, description, category, image, rating];
 }

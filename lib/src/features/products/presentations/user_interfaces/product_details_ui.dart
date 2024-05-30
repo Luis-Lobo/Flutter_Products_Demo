@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_products_demo/main.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_details.dart';
 import 'package:go_router/go_router.dart';

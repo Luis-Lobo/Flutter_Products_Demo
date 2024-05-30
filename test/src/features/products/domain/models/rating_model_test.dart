@@ -15,7 +15,7 @@ void main() {
 
   test('Test Rating Model fromJson method', () {
     final ratingModel = RatingModel.fromJson(
-      json: jsonDecode(
+     jsonDecode(
         fixture(name: 'rating_model.json'),
       ),
     );

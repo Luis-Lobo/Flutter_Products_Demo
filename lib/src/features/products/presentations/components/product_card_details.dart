@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/components/product_text_info.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_rich_text_info.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductCardDetails extends StatelessWidget {
@@ -45,10 +45,10 @@ class ProductCardDetails extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            ProductTextInfo(title: l10n.category, data: productModel.category),
-            ProductTextInfo(
+            ProductRichTextInfo(title: l10n.category, data: productModel.category),
+            ProductRichTextInfo(
                 title: l10n.description, data: productModel.description),
-            ProductTextInfo(
+            ProductRichTextInfo(
                 title: l10n.price, data: productModel.price.toString()),
           ],
         ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
+import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_details.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_bottom_nav.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_home.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_drawer.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/products_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +32,9 @@ class _ProductsHomeUIState extends State<ProductsHomeUI> {
 
   @override
   Widget build(BuildContext context) {
-  _l10n =  AppLocalizations.of(context)!;
+    _l10n = AppLocalizations.of(context)!;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return BlocBuilder<ProductsCubit, ProductsState>(
         bloc: _cubit,
         builder: (context, state) {
@@ -47,30 +51,56 @@ class _ProductsHomeUIState extends State<ProductsHomeUI> {
           }
           if (state is ProductsSuccessState) {
             return Scaffold(
-              appBar:  ProductsBar(
+              appBar: ProductsBar(
                 icon: Icons.draw,
                 title: _l10n.name,
                 subtitle: "products",
               ),
-              body: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      ListView.builder(
-                        shrinkWrap: true,
-                        primary: false,
-                        itemCount: state.products.length,
-                        itemBuilder: (context, index) {
-                          final product = state.products.elementAt(index);
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 16),
+              drawer: const ProductDrawer(),
+              body: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  height: height * 0.55,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.products.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        final product = state.products.elementAt(index);
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: width * 0.7,
                             child: ProductCardHome(
-                                productModel: product, onTap: () => context.go('/product_details', extra: product),),
-                          );
-                        },
+                              productModel: product,
+                              onTap: () => context.go('/product_details', extra: product),
+                            ),
+                          ),
+                        );
+                      }),
+                ),
+              ),
+              bottomNavigationBar: SafeArea(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: ApplicationColors.orange,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ProductBottomNav(
+                        icon: Icons.home,
+                      ),
+                      ProductBottomNav(
+                        icon: Icons.search,
+                      ),
+                      ProductBottomNav(
+                        icon: Icons.add_box_rounded,
+                      ),
+                      ProductBottomNav(
+                        icon: Icons.shopping_cart,
+                      ),
+                      ProductBottomNav(
+                        icon: Icons.person,
                       ),
                     ],
                   ),

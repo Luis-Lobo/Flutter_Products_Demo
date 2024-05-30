@@ -20,7 +20,7 @@ class ProductsRepositoryImpl implements ProductsRepository {
     );
     return List<ProductModel>.from(
       response.map(
-        (data) => ProductModel.fromJson(json: data),
+        (data) => ProductModel.fromJson(data),
       ),
     );
   }
@@ -33,6 +33,6 @@ class ProductsRepositoryImpl implements ProductsRepository {
       request: request,
     );
 
-    return ProductModel.fromJson(json: response);
+    return ProductModel.fromJson(response);
   }
 }

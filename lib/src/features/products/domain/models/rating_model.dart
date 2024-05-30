@@ -16,9 +16,7 @@ class RatingModel extends Equatable {
     required this.count,
   });
 
-  factory RatingModel.fromJson(
-          {required Map<String, dynamic> json}) =>
-      _$RatingModelFromJson(json);
+  factory RatingModel.fromJson(Map<String, dynamic> json) => _$RatingModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$RatingModelToJson(this);
 

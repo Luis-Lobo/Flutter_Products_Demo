@@ -3,5 +3,6 @@
     "name": "Name: ",
     "category": "Category: ",
     "description" : "Description: ",
-    "price": "Price: "
+    "price": "Price: ",
+    "priceSymbol": "R$"
 }
