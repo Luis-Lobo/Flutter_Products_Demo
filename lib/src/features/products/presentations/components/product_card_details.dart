@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_rich_text_info.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,6 +21,7 @@ class ProductCardDetails extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
+        color: ApplicationColors.orange,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -45,11 +47,9 @@ class ProductCardDetails extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+            ProductRichTextInfo(title: l10n.description, data: productModel.description),
             ProductRichTextInfo(title: l10n.category, data: productModel.category),
-            ProductRichTextInfo(
-                title: l10n.description, data: productModel.description),
-            ProductRichTextInfo(
-                title: l10n.price, data: productModel.price.toString()),
+            ProductRichTextInfo(title: l10n.price, data: productModel.price.toString()),
           ],
         ),
       ),

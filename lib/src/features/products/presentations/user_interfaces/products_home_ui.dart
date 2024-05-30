@@ -51,36 +51,53 @@ class _ProductsHomeUIState extends State<ProductsHomeUI> {
           }
           if (state is ProductsSuccessState) {
             return Scaffold(
-              appBar: ProductsBar(
+              backgroundColor: ApplicationColors.grey400,
+            /*  appBar: ProductsBar(
                 icon: Icons.draw,
                 title: _l10n.name,
                 subtitle: "products",
-              ),
+              ),*/
               drawer: const ProductDrawer(),
-              body: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  height: height * 0.55,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: state.products.length,
-                      itemBuilder: (BuildContext ctx, index) {
-                        final product = state.products.elementAt(index);
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            width: width * 0.7,
-                            child: ProductCardHome(
-                              productModel: product,
-                              onTap: () => context.go('/product_details', extra: product),
-                            ),
-                          ),
-                        );
-                      }),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      height: height * 0.3,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("lib/src/core/assets/marketing.jpg"),
+                          fit: BoxFit.fitWidth
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: SizedBox(
+                        height: height * 0.55,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.products.length,
+                            itemBuilder: (BuildContext ctx, index) {
+                              final product = state.products.elementAt(index);
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SizedBox(
+                                  width: width * 0.7,
+                                  child: ProductCardHome(
+                                    productModel: product,
+                                    onTap: () => context.go('/product_details', extra: product),
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               bottomNavigationBar: SafeArea(
                 child: Container(
+                  height: height * 0.04,
                   decoration: const BoxDecoration(
                     color: ApplicationColors.orange,
                   ),

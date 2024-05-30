@@ -21,6 +21,7 @@ class ProductCardHome extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
+        color: ApplicationColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -35,7 +36,7 @@ class ProductCardHome extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
+                padding: const EdgeInsets.all(16),
                 child: Text(
                   productModel.title,
                   textAlign: TextAlign.center,
@@ -43,7 +44,7 @@ class ProductCardHome extends StatelessWidget {
                   style: textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: ApplicationColors.black,
                   ),
                 )),
             Center(
@@ -54,6 +55,7 @@ class ProductCardHome extends StatelessWidget {
                       text: l10n.priceSymbol,
                       style: textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w400,
+                        color: ApplicationColors.black,
                       ),
                     ),
                     TextSpan(

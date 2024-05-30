@@ -18,7 +18,7 @@ void main() {
     expect(productModel.category, "men's clothing");
     expect(productModel.image,
         "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg");
-    expect(productModel.props.length, 6);
+    expect(productModel.props.length, 7);
   });
 
   test('Test Product Model fromJson method', () {
@@ -37,7 +37,7 @@ void main() {
     expect(productModel.category, "men's clothing");
     expect(productModel.image,
         "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg");
-    expect(productModel.props.length, 6);
+    expect(productModel.props.length, 7);
   });
 
   test('Test Product Model toJson method', () {
