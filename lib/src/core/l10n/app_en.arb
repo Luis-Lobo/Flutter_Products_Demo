@@ -4,5 +4,6 @@
     "category": "Category: ",
     "description" : "Description: ",
     "price": "Price: ",
-    "priceSymbol": "R$"
+    "priceSymbol": "R$",
+    "logout": "Logout"  
 }

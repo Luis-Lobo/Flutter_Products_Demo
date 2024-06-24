@@ -4,5 +4,6 @@
     "description" : "Descrição",
     "category": "Categoria: ",
     "price": "Preço ",  
-    "priceSymbol": "R$"  
+    "priceSymbol": "R$",
+    "logout": "Sair do aplicativo"  
 }

@@ -5,13 +5,16 @@ import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_bottom_nav.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_drawer.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_cart_page_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/products_home_ui.dart';
 
 class ProductsPagesUI extends HookWidget {
   final ProductUIPages? page;
 
-  const ProductsPagesUI({this.page, super.key});
+   ProductsPagesUI({this.page, super.key});
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +32,24 @@ class ProductsPagesUI extends HookWidget {
       listener: (_, currentState) {},
       builder: (context, state) {
         return Scaffold(
+          key: _scaffoldKey,
           body: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (state.isHomePage) const ProductsHomeUI(),
-                if (state.isCartPage) const ProductCardPage(),
-              ],
+            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (state.isHomePage) const ProductsHomeUI(),
+                  if (state.isCartPage) const ProductCardPage(),
+                ],
+              ),
             ),
           ),
-        ),
-          bottomNavigationBar: SafeArea(
+          drawer: const ProductDrawer(),
+          bottomNavigationBar: Builder(
+            builder: (context) {
+              return SafeArea(
                 child: Container(
                   height: height * 0.04,
                   decoration: const BoxDecoration(
@@ -53,30 +60,33 @@ class ProductsPagesUI extends HookWidget {
                     children: [
                       ProductBottomNav(
                         icon: Icons.home,
-                        onTap:() {},
+                        onTap: () => cubit.initialize,
                       ),
                       ProductBottomNav(
                         icon: Icons.search,
-                        onTap:() {},
+                        onTap: () {},
                       ),
                       ProductBottomNav(
                         icon: Icons.add_box_rounded,
-                        onTap:() {},
+                        onTap: () {},
                       ),
                       ProductBottomNav(
                         icon: Icons.shopping_cart,
-                        onTap:() {},
+                        onTap: () => cubit.goToCartPage(),
                       ),
                       ProductBottomNav(
                         icon: Icons.person,
-                        onTap:() {},
+                        onTap: _scaffoldKey.currentState!.openDrawer,
                       ),
                     ],
                   ),
                 ),
-              ),
+              );
+            }
+          ),
         );
       },
     );
   }
 }
+

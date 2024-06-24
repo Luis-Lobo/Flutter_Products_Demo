@@ -17,9 +17,8 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const ProductsPagesUI();
+        return ProductsPagesUI();
       },
-      
       routes: <RouteBase>[
         GoRoute(
           path: 'product_details',
