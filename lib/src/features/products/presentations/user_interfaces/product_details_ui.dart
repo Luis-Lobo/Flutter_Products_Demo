@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_details.dart';
 import 'package:go_router/go_router.dart';
@@ -17,11 +16,9 @@ class ProductDetailsUI extends StatefulWidget {
 }
 
 class _ProductDetailsUIState extends State<ProductDetailsUI> {
-  late AppLocalizations _l10n;
 
   @override
   Widget build(BuildContext context) {
-    _l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar:  ProductsBar(
         icon: Icons.draw,

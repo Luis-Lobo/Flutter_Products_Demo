@@ -1,25 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 
 class ProductDrawer extends StatelessWidget {
- // final UserModel user;
- // final PackageInfo? packageInfo;
   final GestureTapCallback? onLogoutTap;
 
   const ProductDrawer({
- //   required this.user,
     this.onLogoutTap,
- //   this.packageInfo,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final l10n = AppLocalizations.of(context)!;
     return Drawer(
       backgroundColor: ApplicationColors.darkBlue,
       child: Column(

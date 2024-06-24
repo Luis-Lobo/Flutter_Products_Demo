@@ -17,7 +17,6 @@ class ProductsPagesUI extends HookWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<ProductsCubit>();
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
 
     useEffect(() {
       cubit.initialize(

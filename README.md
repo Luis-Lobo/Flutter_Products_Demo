@@ -14,11 +14,11 @@ Welcome to the Coffee Shop App! This application is designed to make it easy to 
 
 ## Technical informations
 
-Fetch Datas from free Api: https://fakestoreapi.com
-Internationalizing
-Custom Wigets
-Layout 
-State Management with Hook
-Cubit
+Fetch Datas from free Api: https://fakestoreapi.com,
+Internationalizing,
+Custom Wigets,
+Layout,
+State Management with Hook,
+Cubit,
 Test Units
 
