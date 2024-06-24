@@ -1,22 +1,24 @@
-# flutter_products_demo
+# Coffe Shop App
 
-A new Flutter project.
+A Flutter project in development.
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+Welcome to the Coffee Shop App! This application is designed to make it easy to purchase delicious coffees. With a friendly and intuitive interface, you can explore our menu, select your favorite coffees, and place orders directly through the app.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Menu Exploration**: View a complete list of our coffees with detailed descriptions and prices.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Other features are in development**
 
-Fetch Datas from Api
-internationalizing
+## Technical informations
+
+Fetch Datas from free Api: https://fakestoreapi.com
+Internationalizing
+Custom Wigets
+Layout 
+State Management with Hook
 Cubit
-Layout
+Test Units
 

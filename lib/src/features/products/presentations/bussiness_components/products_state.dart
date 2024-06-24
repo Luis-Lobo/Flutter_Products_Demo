@@ -1,34 +1,56 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 
-abstract class ProductsState extends Equatable {
-  const ProductsState();
+class ProductsState extends Equatable {
+  final ProductUIState uiState;
+  final ProductUIPages uiPages;
+
+  final List<ProductModel>? products;
+
+  factory ProductsState.initial() => const ProductsState(
+        uiState: ProductUIState.initial,
+        uiPages: ProductUIPages.homePage,
+      );
+
+  const ProductsState({
+    required this.uiState,
+    required this.uiPages,
+    this.products = const [],
+  });
+
+  ProductsState copyWith({
+    ProductUIState? uiState,
+    ProductUIPages? uiPages,
+    List<ProductModel>? products,
+  }) =>
+      ProductsState(
+        uiState: uiState ?? this.uiState,
+        uiPages: uiPages ?? this.uiPages,
+        products: products ?? this.products,
+      );
+
+  bool get isHomePage => uiPages == ProductUIPages.homePage;
+  bool get isCartPage => uiPages == ProductUIPages.cartPage;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        uiState,
+        uiPages,
+        products,
+      ];
 }
 
-class ProductsInitialState extends ProductsState {
-  const ProductsInitialState();
+enum ProductUIState {
+  initial,
+  loading,
+  success,
+  error;
+
+  bool get isSuccess => this == ProductUIState.success;
+
+  bool get hasError => this == ProductUIState.error;
+
+  bool get isLoading => this == ProductUIState.loading || this == ProductUIState.initial;
 }
 
-class ProductsSuccessState extends ProductsState {
-  final List<ProductModel> products;
-  const ProductsSuccessState({required this.products});
-
-    @override
-  List<Object> get props => [products];
-}
-
-class ProductsLoadingState extends ProductsState {
-  const ProductsLoadingState();
-}
-
-class ProductsErrorState extends ProductsState {
-  final String message;
-
-  const ProductsErrorState({required this.message});
-
-  @override
-  List<Object> get props => [message];
-}
+enum ProductUIPages { homePage, cartPage }

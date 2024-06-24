@@ -3,24 +3,31 @@ import 'package:flutter_products_demo/src/features/products/domain/use_cases/use
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
-   final ProductsUseCase _useCase;
+  final ProductsUseCase _useCase;
 
-     ProductsCubit({
+  ProductsCubit({
     required ProductsUseCase useCase,
   })  : _useCase = useCase,
-        super(const ProductsInitialState());
+        super(ProductsState.initial());
 
- void getProducts() async {
-     try {
-      emit(const ProductsLoadingState());
+  void initialize({ProductUIPages? page}) async {
+    emit(state.copyWith(uiState: ProductUIState.loading));
 
+    try {
       final products = await _useCase.getProducts();
 
-      emit(ProductsSuccessState(
-          products: products));
+      emit(state.copyWith(products: products));
     } catch (exception) {
-      emit(ProductsErrorState(message: exception.toString()));
+      emit(state.copyWith(
+        uiState: ProductUIState.error,
+      ));
     }
+  }
 
-}
+  void goToCartPage() async {
+    emit(state.copyWith(
+      uiState: ProductUIState.loading,
+      uiPages: ProductUIPages.cartPage,
+    ));
+  }
 }

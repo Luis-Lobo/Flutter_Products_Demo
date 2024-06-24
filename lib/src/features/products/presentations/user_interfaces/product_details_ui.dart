@@ -26,7 +26,6 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
       appBar:  ProductsBar(
         icon: Icons.draw,
         title: widget.productModel.title,
-        subtitle: "products",
       ),
       body: Column(
         children: [

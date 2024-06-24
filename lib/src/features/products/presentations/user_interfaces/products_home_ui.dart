@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
@@ -11,7 +12,62 @@ import 'package:flutter_products_demo/src/features/products/presentations/compon
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
-class ProductsHomeUI extends StatefulWidget {
+class ProductsHomeUI extends HookWidget {
+  const ProductsHomeUI({super.key});
+
+  Widget build(BuildContext context) {
+    final cubit = context.read<ProductsCubit>();
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    return BlocBuilder<ProductsCubit, ProductsState>(
+      builder: (context, state) {
+        return Flex(
+          direction: Axis.vertical,
+          children: [
+            Column(
+              children: [
+                Container(
+                  height: height * 0.3,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("lib/src/core/assets/marketing.jpg"),
+                      fit: BoxFit.fitWidth
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: SizedBox(
+                    height: height * 0.55,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.products?.length,
+                        itemBuilder: (BuildContext ctx, index) {
+                          final product = state.products?.elementAt(index);
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              width: width * 0.7,
+                              child: ProductCardHome(
+                                productModel: product!,
+                                onTap: () => context.go('/product_details', extra: product),
+                              ),
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+              ],
+            ),
+            
+            ],
+        );
+      }
+    );
+  }
+}
+
+/*class ProductsHomeUI extends StatefulWidget {
   const ProductsHomeUI({super.key});
 
   @override
@@ -95,34 +151,7 @@ class _ProductsHomeUIState extends State<ProductsHomeUI> {
                   ],
                 ),
               ),
-              bottomNavigationBar: SafeArea(
-                child: Container(
-                  height: height * 0.04,
-                  decoration: const BoxDecoration(
-                    color: ApplicationColors.orange,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ProductBottomNav(
-                        icon: Icons.home,
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.search,
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.add_box_rounded,
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.shopping_cart,
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.person,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              
             );
           } else {
             return const Scaffold(
@@ -135,4 +164,4 @@ class _ProductsHomeUIState extends State<ProductsHomeUI> {
           }
         });
   }
-}
+} */
