@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
+import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,7 +24,7 @@ class ProductCardHome extends StatelessWidget {
       child: Card(
         color: ApplicationColors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(ApplicationStylesConstants.spacing8Sp),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -36,7 +37,7 @@ class ProductCardHome extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(ApplicationStylesConstants.spacing16Sp),
                 child: Text(
                   productModel.title,
                   textAlign: TextAlign.center,

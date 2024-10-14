@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
+import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 
 class ProductDrawer extends StatelessWidget {
   final GestureTapCallback? onLogoutTap;
@@ -25,7 +26,7 @@ class ProductDrawer extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
                 ListTile(
                   title: Container(
                     decoration: BoxDecoration(
@@ -45,7 +46,7 @@ class ProductDrawer extends StatelessWidget {
                 ListTile(
                   title: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(bottom: 4.0),
+                      padding: const EdgeInsets.only(bottom: ApplicationStylesConstants.spacing4Sp),
                       child: Text(
                         "user.name",
                         style: textTheme.titleLarge?.copyWith(color: ApplicationColors.white),

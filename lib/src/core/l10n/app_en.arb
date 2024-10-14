@@ -6,5 +6,6 @@
     "description" : "Description: ",
     "logout": "Logout",  
     "price": "Price: ",
-    "priceSymbol": "R$"
+    "priceSymbol": "R$",
+    "totalPurchasePrice" : "Total Purchase Price"
 }

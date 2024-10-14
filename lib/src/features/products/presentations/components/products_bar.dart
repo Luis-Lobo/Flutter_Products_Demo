@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 
 class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData icon;
@@ -31,7 +32,7 @@ class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
             icon,
             size: 24,
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: ApplicationStylesConstants.spacing10Sp),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,5 +65,5 @@ class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(ApplicationStylesConstants.spacing60Sp);
 }

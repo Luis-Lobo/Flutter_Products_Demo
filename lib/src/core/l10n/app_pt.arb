@@ -6,5 +6,6 @@
     "logout": "Sair do aplicativo", 
     "category": "Categoria: ",
     "price": "Preço ",  
-    "priceSymbol": "R$"
+    "priceSymbol": "R$",
+    "totalPurchasePrice" : "Total da Compra"
 }

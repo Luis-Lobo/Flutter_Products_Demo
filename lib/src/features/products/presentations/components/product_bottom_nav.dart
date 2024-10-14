@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
+import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 
 class ProductBottomNav extends StatelessWidget {
   const ProductBottomNav({
@@ -14,8 +15,8 @@ class ProductBottomNav extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: 36,
-        width: 36,
+        height: ApplicationStylesConstants.spacing36Sp,
+        width: ApplicationStylesConstants.spacing36Sp,
         child: Icon(icon, color: ApplicationColors.white),
       ),
     );
