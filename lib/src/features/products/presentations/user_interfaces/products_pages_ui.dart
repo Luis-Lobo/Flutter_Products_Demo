@@ -40,6 +40,9 @@ class ProductsPagesUI extends HookWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  state.products.isEmpty ?
+                  const Text("vazio") :
+                  Text(state.products.length.toString()),
                   if (state.isHomePage) const ProductsHomeUI(),
                   if (state.isCartPage) const ProductCardPage(),
                 ],
@@ -60,7 +63,7 @@ class ProductsPagesUI extends HookWidget {
                     children: [
                       ProductBottomNav(
                         icon: Icons.home,
-                        onTap: () => cubit.initialize,
+                        onTap: () => cubit.initialize(),
                       ),
                       ProductBottomNav(
                         icon: Icons.search,

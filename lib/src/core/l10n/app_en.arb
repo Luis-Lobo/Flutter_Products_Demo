@@ -1,9 +1,10 @@
 {
     "@@locale": "en",
+    "add": "Add to Cart",
     "name": "Name: ",
     "category": "Category: ",
     "description" : "Description: ",
+    "logout": "Logout",  
     "price": "Price: ",
-    "priceSymbol": "R$",
-    "logout": "Logout"  
+    "priceSymbol": "R$"
 }

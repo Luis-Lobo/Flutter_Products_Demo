@@ -21,7 +21,7 @@ class ProductCardDetails extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
-        color: ApplicationColors.orange,
+        color: ApplicationColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -48,7 +48,9 @@ class ProductCardDetails extends StatelessWidget {
               ),
             ),
             ProductRichTextInfo(title: l10n.description, data: productModel.description),
+            const SizedBox(height: 4.0),
             ProductRichTextInfo(title: l10n.category, data: productModel.category),
+            const SizedBox(height: 4.0),
             ProductRichTextInfo(title: l10n.price, data: productModel.price.toString()),
           ],
         ),

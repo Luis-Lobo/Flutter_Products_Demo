@@ -5,7 +5,9 @@ class ProductsState extends Equatable {
   final ProductUIState uiState;
   final ProductUIPages uiPages;
 
-  final List<ProductModel>? products;
+  final List<ProductModel> products;
+  final List<ProductModel> cartList;
+  final double totalPurchasePrice;
 
   factory ProductsState.initial() => const ProductsState(
         uiState: ProductUIState.initial,
@@ -16,17 +18,23 @@ class ProductsState extends Equatable {
     required this.uiState,
     required this.uiPages,
     this.products = const [],
+    this.cartList = const [],
+    this.totalPurchasePrice = 0.0,
   });
 
   ProductsState copyWith({
     ProductUIState? uiState,
     ProductUIPages? uiPages,
     List<ProductModel>? products,
+    List<ProductModel>? cartList,
+    double? totalPurchasePrice,
   }) =>
       ProductsState(
         uiState: uiState ?? this.uiState,
         uiPages: uiPages ?? this.uiPages,
         products: products ?? this.products,
+        cartList: cartList ?? this.cartList,
+        totalPurchasePrice: totalPurchasePrice ?? this.totalPurchasePrice,
       );
 
   bool get isHomePage => uiPages == ProductUIPages.homePage;
@@ -37,6 +45,8 @@ class ProductsState extends Equatable {
         uiState,
         uiPages,
         products,
+        cartList,
+        totalPurchasePrice
       ];
 }
 

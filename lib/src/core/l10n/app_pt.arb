@@ -1,9 +1,10 @@
 {
     "@@locale": "pt",
+    "add": "Adicionar ao carrinho",
     "name": "Nome:",
     "description" : "Descrição",
+    "logout": "Sair do aplicativo", 
     "category": "Categoria: ",
     "price": "Preço ",  
-    "priceSymbol": "R$",
-    "logout": "Sair do aplicativo"  
+    "priceSymbol": "R$"
 }
