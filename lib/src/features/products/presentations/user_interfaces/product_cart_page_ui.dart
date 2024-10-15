@@ -6,6 +6,7 @@ import 'package:flutter_products_demo/src/core/theme/application_styles_constant
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_item_tile.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
 
 class ProductCardPage extends HookWidget {
   const ProductCardPage({super.key});
@@ -15,7 +16,12 @@ class ProductCardPage extends HookWidget {
     final cubit = context.read<ProductsCubit>();
     final l10n = AppLocalizations.of(context)!;
     final height = MediaQuery.of(context).size.height;
-    return BlocBuilder<ProductsCubit, ProductsState>(builder: (context, state) {
+    return BlocConsumer<ProductsCubit, ProductsState>(listener: (context, currentState) {
+      if (currentState.removeProductInCartList == true) {
+        ProductSnackBar.showRemoveSnackBar(context: context, message: l10n.removeToCard);
+        cubit.resetStatesSnackBar();
+      }
+    }, builder: (context, state) {
       return Flex(
         direction: Axis.vertical,
         children: [
@@ -24,16 +30,16 @@ class ProductCardPage extends HookWidget {
             child: state.cartList.isEmpty
                 ? const SizedBox()
                 : ListView.builder(
-                  itemCount: state.cartList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: ApplicationStylesConstants.spacing16Sp),
-                      child: ProductItemTile(
-                        productModel: state.cartList[index],
-                        remove: () => cubit.removeToCart(product: state.cartList[index], cartList: state.cartList),
-                      ),
-                    );
-                  }),
+                    itemCount: state.cartList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: ApplicationStylesConstants.spacing16Sp),
+                        child: ProductItemTile(
+                          productModel: state.cartList[index],
+                          remove: () => cubit.removeToCart(product: state.cartList[index], cartList: state.cartList),
+                        ),
+                      );
+                    }),
           ),
           SizedBox(
             child: Text(l10n.totalPurchasePrice),

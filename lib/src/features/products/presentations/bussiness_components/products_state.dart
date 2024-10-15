@@ -8,6 +8,8 @@ class ProductsState extends Equatable {
   final List<ProductModel> products;
   final List<ProductModel> cartList;
   final double totalPurchasePrice;
+  final bool? addProductInCartList;
+  final bool? removeProductInCartList;
 
   factory ProductsState.initial() => const ProductsState(
         uiState: ProductUIState.initial,
@@ -20,6 +22,8 @@ class ProductsState extends Equatable {
     this.products = const [],
     this.cartList = const [],
     this.totalPurchasePrice = 0.0,
+    this.addProductInCartList = false,
+    this.removeProductInCartList = false,
   });
 
   ProductsState copyWith({
@@ -28,6 +32,8 @@ class ProductsState extends Equatable {
     List<ProductModel>? products,
     List<ProductModel>? cartList,
     double? totalPurchasePrice,
+    bool? addProductInCartList,
+    bool? removeProductInCartList,
   }) =>
       ProductsState(
         uiState: uiState ?? this.uiState,
@@ -35,6 +41,8 @@ class ProductsState extends Equatable {
         products: products ?? this.products,
         cartList: cartList ?? this.cartList,
         totalPurchasePrice: totalPurchasePrice ?? this.totalPurchasePrice,
+        addProductInCartList: addProductInCartList ?? this.addProductInCartList,
+        removeProductInCartList: removeProductInCartList ?? this.removeProductInCartList,
       );
 
   bool get isHomePage => uiPages == ProductUIPages.homePage;
@@ -42,12 +50,14 @@ class ProductsState extends Equatable {
 
   @override
   List<Object?> get props => [
-        uiState,
-        uiPages,
-        products,
-        cartList,
-        totalPurchasePrice
-      ];
+    uiState, 
+    uiPages, 
+    products, 
+    cartList, 
+    totalPurchasePrice, 
+    addProductInCartList, 
+    removeProductInCartList,
+    ];
 }
 
 enum ProductUIState {

@@ -7,5 +7,7 @@
     "logout": "Logout",  
     "price": "Price: ",
     "priceSymbol": "R$",
-    "totalPurchasePrice" : "Total Purchase Price"
+    "totalPurchasePrice" : "Total Purchase Price",
+    "addToCart" : "Added to shopping cart",
+    "removeToCard" : "Removed from shopping cart"
 }

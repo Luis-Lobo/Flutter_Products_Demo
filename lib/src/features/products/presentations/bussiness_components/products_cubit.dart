@@ -41,6 +41,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     calculatePurchasePrice(updateList: updateList);
     emit(state.copyWith(
       cartList: updateList,
+      addProductInCartList: true,
     ));
   }
 
@@ -50,6 +51,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     calculatePurchasePrice(updateList: updateList);
     emit(state.copyWith(
       cartList: updateList,
+      removeProductInCartList: true,
     ));
   }
 
@@ -60,6 +62,13 @@ class ProductsCubit extends Cubit<ProductsState> {
     }
     emit(state.copyWith(
       totalPurchasePrice: totalPurchasePrice,
+    ));
+  }
+
+  void resetStatesSnackBar(){
+    emit(state.copyWith(
+      addProductInCartList: false,
+      removeProductInCartList: false,
     ));
   }
 }

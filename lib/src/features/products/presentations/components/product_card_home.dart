@@ -7,11 +7,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ProductCardHome extends StatelessWidget {
   final ProductModel productModel;
   final GestureTapCallback? onTap;
+  final GestureTapCallback? addToPurchaseList;
 
   const ProductCardHome({
     super.key,
     required this.productModel,
     required this.onTap,
+    required this.addToPurchaseList,
   });
 
   @override
@@ -48,27 +50,40 @@ class ProductCardHome extends StatelessWidget {
                     color: ApplicationColors.black,
                   ),
                 )),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: l10n.priceSymbol,
-                      style: textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: ApplicationColors.black,
-                      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: l10n.priceSymbol,
+                          style: textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: ApplicationColors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: productModel.price.toString(),
+                          style: textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w700, 
+                            fontSize: 24,
+                            color: ApplicationColors.red),
+                        ),
+                      ],
                     ),
-                    TextSpan(
-                      text: productModel.price.toString(),
-                      style: textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w700, 
-                        fontSize: 24,
-                        color: ApplicationColors.red),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                GestureDetector(
+                  onTap: addToPurchaseList,  
+                  child: const Icon(
+                    Icons.add_shopping_cart, 
+                    color: ApplicationColors.red,
+                    
+                    ),
+                )
+              ],
             ),
           ],
         ),
