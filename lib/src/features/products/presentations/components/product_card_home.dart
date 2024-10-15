@@ -64,24 +64,35 @@ class ProductCardHome extends StatelessWidget {
                             color: ApplicationColors.black,
                           ),
                         ),
+                        const WidgetSpan(child: SizedBox(width: ApplicationStylesConstants.spacing4Sp)),
                         TextSpan(
                           text: productModel.price.toString(),
-                          style: textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w700, 
-                            fontSize: 24,
-                            color: ApplicationColors.red),
+                          style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700, fontSize: 24, color: ApplicationColors.red),
                         ),
                       ],
                     ),
                   ),
                 ),
                 GestureDetector(
-                  onTap: addToPurchaseList,  
-                  child: const Icon(
-                    Icons.add_shopping_cart, 
-                    color: ApplicationColors.red,
-                    
+                  onTap: addToPurchaseList,
+                  child: Container(
+                    width: 60,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                      border: Border.all(
+                        color: ApplicationColors.black36,
+                        width: 2.0,
+                      ),
+                      
                     ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.add_shopping_cart,
+                        color: ApplicationColors.black36,
+                      ),
+                    ),
+                  ),
                 )
               ],
             ),

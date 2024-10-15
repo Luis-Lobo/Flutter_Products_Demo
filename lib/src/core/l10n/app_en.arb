@@ -1,13 +1,17 @@
 {
     "@@locale": "en",
     "add": "Add to Cart",
-    "name": "Name: ",
+    "addToCart" : "Added to shopping cart",
     "category": "Category: ",
     "description" : "Description: ",
     "logout": "Logout",  
+    "name": "Name: ",
     "price": "Price: ",
     "priceSymbol": "R$",
-    "totalPurchasePrice" : "Total Purchase Price",
-    "addToCart" : "Added to shopping cart",
-    "removeToCard" : "Removed from shopping cart"
+    "profile" : "PROFILE",
+    "purchase" : "PURCHASE",
+    "removeToCard" : "Removed from shopping cart",
+    "search": "SEARCH",    
+    "shop": "SHOP",
+    "totalPurchasePrice" : "Total Purchase Price"
 }

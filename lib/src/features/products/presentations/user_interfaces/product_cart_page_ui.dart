@@ -16,7 +16,8 @@ class ProductCardPage extends HookWidget {
     final cubit = context.read<ProductsCubit>();
     final l10n = AppLocalizations.of(context)!;
     final height = MediaQuery.of(context).size.height;
-    return BlocConsumer<ProductsCubit, ProductsState>(listener: (context, currentState) {
+    return BlocConsumer<ProductsCubit, ProductsState>(
+      listener: (context, currentState) {
       if (currentState.removeProductInCartList == true) {
         ProductSnackBar.showRemoveSnackBar(context: context, message: l10n.removeToCard);
         cubit.resetStatesSnackBar();

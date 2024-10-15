@@ -1,4 +1,5 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
@@ -12,7 +13,7 @@ import 'package:flutter_products_demo/src/features/products/presentations/user_i
 class ProductsPagesUI extends HookWidget {
   final ProductUIPages? page;
 
-   ProductsPagesUI({this.page, super.key});
+  ProductsPagesUI({this.page, super.key});
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -20,6 +21,7 @@ class ProductsPagesUI extends HookWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<ProductsCubit>();
     final height = MediaQuery.of(context).size.height;
+    final l10n = AppLocalizations.of(context)!;
 
     useEffect(() {
       cubit.initialize(
@@ -47,46 +49,43 @@ class ProductsPagesUI extends HookWidget {
             ),
           ),
           drawer: const ProductDrawer(),
-          bottomNavigationBar: Builder(
-            builder: (context) {
-              return SafeArea(
-                child: Container(
-                  height: height * 0.04,
-                  decoration: const BoxDecoration(
-                    color: ApplicationColors.red,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ProductBottomNav(
-                        icon: Icons.home,
-                        onTap: () => cubit.initialize(),
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.search,
-                        onTap: () {},
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.add_box_rounded,
-                        onTap: () {},
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.shopping_cart,
-                        onTap: () => cubit.goToCartPage(),
-                      ),
-                      ProductBottomNav(
-                        icon: Icons.person,
-                        onTap: _scaffoldKey.currentState!.openDrawer,
-                      ),
-                    ],
-                  ),
+          bottomNavigationBar: Builder(builder: (context) {
+            return SafeArea(
+              child: Container(
+                height: height * 0.06,
+                decoration: const BoxDecoration(
+                  color: ApplicationColors.red,
                 ),
-              );
-            }
-          ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ProductBottomNav(
+                      icon: Icons.home,
+                      title: l10n.shop,
+                      onTap: () => cubit.initialize(),
+                    ),
+                    ProductBottomNav(
+                      icon: Icons.search,
+                      title: l10n.search,
+                      onTap: () {},
+                    ),
+                    ProductBottomNav(
+                      icon: Icons.shopping_cart,
+                      title: l10n.purchase,
+                      onTap: () => cubit.goToCartPage(),
+                    ),
+                    ProductBottomNav(
+                      icon: Icons.person,
+                      title: l10n.profile,
+                      onTap: _scaffoldKey.currentState!.openDrawer,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
         );
       },
     );
   }
 }
-
