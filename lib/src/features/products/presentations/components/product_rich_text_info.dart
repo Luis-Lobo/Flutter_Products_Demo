@@ -17,22 +17,26 @@ class ProductRichTextInfo extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Align(
       alignment: alignment ?? Alignment.bottomLeft,
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: title,
-              style: textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w400,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: RichText(
+          textAlign: TextAlign.justify,
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: title,
+                style: textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-            TextSpan(
-              text: data,
-              style: textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
+              TextSpan(
+                text: data,
+                style: textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

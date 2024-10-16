@@ -8,7 +8,7 @@ class ApplicationColors {
   static const lightGreen = Color(0XFF61CE70);
   static const green = Color(0XFF25A944);
   static const yellow = Color(0XFFFFEE58);
-  static const orange = Color(0XFFFFCA28);
+  static const lightOrange = Color(0XFFFFCA28);
   static const black = Color(0XFF000000);
   static const black36 = Color(0XFF363636);
   static const grey900 = Color(0XFF212121);

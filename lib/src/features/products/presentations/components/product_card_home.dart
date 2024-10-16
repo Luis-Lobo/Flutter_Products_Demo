@@ -51,7 +51,7 @@ class ProductCardHome extends StatelessWidget {
                   ),
                 )),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Center(
                   child: RichText(
