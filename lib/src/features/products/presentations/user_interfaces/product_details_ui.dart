@@ -26,6 +26,7 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
+    final height = MediaQuery.of(context).size.height;
     final cubit = context.read<ProductsCubit>();
     return BlocConsumer<ProductsCubit, ProductsState>(listener: (context, currentState) {
       if (currentState.addProductInCartList == true) {
@@ -35,9 +36,8 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
     }, builder: (context, state) {
       return Scaffold(
         appBar: ProductsBar(
-          icon: Icons.draw,
           title: widget.productModel.title,
-          onPressed: () => context.go('/'),
+          onPressedReturnToHome: () => context.go('/'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
@@ -63,17 +63,38 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
                   comment: "Neque porro quisquam est qui dolorem...",
                   rating: 4.5,
                 ),
-                SizedBox(
-                  child: ElevatedButton(onPressed: () => context.go('/'), child: const Text("voltar")),
-                ),
-                ElevatedButton(
-                  child: Text(l10n.add),
-                  onPressed: () => cubit.addToCart(product: widget.productModel, cartList: state.cartList),
-                ),
               ],
             ),
           ),
         ),
+        bottomNavigationBar: Builder(builder: (context) {
+          return SafeArea(
+            child: Container(
+              height: height * 0.06,
+              color: ApplicationColors.red,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ApplicationColors.black36,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ),
+                  onPressed: () => cubit.addToCart(product: widget.productModel, cartList: state.cartList),
+                  child: Text(
+                    l10n.add,
+                    style: textTheme.titleLarge?.copyWith(
+                      color: ApplicationColors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        }),
       );
     });
   }

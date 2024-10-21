@@ -16,41 +16,27 @@ class ProductCardDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final textTheme = Theme.of(context).textTheme;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Card(
       color: ApplicationColors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(ApplicationStylesConstants.spacing8Sp),
+        borderRadius: BorderRadius.circular(ApplicationStylesConstants.spacing16Sp),
       ),
       child: Column(
         children: [
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: ApplicationStylesConstants.spacing36Sp),
-              child: Text(
-                productModel.title,
-                textAlign: TextAlign.center,
-                style: textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  fontSize: ApplicationStylesConstants.spacing24Sp,
-                  color: Colors.grey,
-                ),
-              )),
           Image.network(
             productModel.image,
-            height: ApplicationStylesConstants.spacing200Sp,
-            width: ApplicationStylesConstants.spacing100Sp,
-            fit: BoxFit.cover,
+            height: height * 0.5,
+            width: width,
+            fit: BoxFit.fitHeight,
           ),
-          Text(
-            productModel.price.toString(),
-            style: textTheme.titleLarge?.copyWith(
-              color: ApplicationColors.black36,
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
-            ),
-          ),
+          ProductRichTextInfo(title: l10n.priceSymbol, data: productModel.price.toString(), alignment: Alignment.center,),          
           const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-          ProductRichTextInfo(title: l10n.category, data: productModel.category,),
+          ProductRichTextInfo(
+            title: l10n.category,
+            data: productModel.category,
+          ),
           const SizedBox(height: ApplicationStylesConstants.spacing4Sp),
           ProductRichTextInfo(title: l10n.description, data: productModel.description),
         ],
