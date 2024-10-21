@@ -50,7 +50,7 @@ class ProductsHomeUI extends HookWidget {
                             width: width * 0.7,
                             child: ProductCardHome(
                               productModel: product,
-                              onTap: () => context.go('/product_details', extra: product),
+                              onTap: () => context.go('/productDetails', extra: product),
                               addToPurchaseList: () => cubit.addToCart(product: product, cartList: state.cartList),
                             ),
                           ),

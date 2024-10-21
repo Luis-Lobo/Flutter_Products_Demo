@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/login_page_ui.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_details_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
@@ -17,16 +18,22 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return ProductsPagesUI();
+        return const LoginPageUi();
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'product_details',
+          path: 'productDetails',
           builder: (BuildContext context, GoRouterState state) {
             final productModel = state.extra! as ProductModel;
             return ProductDetailsUI(
               productModel: productModel,
             );
+          },
+        ),
+        GoRoute(
+          path: 'productsPages',
+          builder: (BuildContext context, GoRouterState state) {
+            return ProductsPagesUI();
           },
         ),
       ],
@@ -44,17 +51,17 @@ class MyApp extends StatelessWidget {
           create: (context) => CubitFactories.productsCubit,
         ),
       ],
-        child: MaterialApp.router(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          routerConfig: _router,
+      child: MaterialApp.router(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
+        routerConfig: _router,
+      ),
     );
   }
 }

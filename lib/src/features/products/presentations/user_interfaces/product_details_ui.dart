@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_products_demo/src/core/components/product_button.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
@@ -74,22 +75,9 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
               color: ApplicationColors.red,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ApplicationColors.black36,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0),
-                    ),
-                  ),
+                child: ProductButton(
+                  textButton: l10n.add,
                   onPressed: () => cubit.addToCart(product: widget.productModel, cartList: state.cartList),
-                  child: Text(
-                    l10n.add,
-                    style: textTheme.titleLarge?.copyWith(
-                      color: ApplicationColors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 24,
-                    ),
-                  ),
                 ),
               ),
             ),
