@@ -6,20 +6,18 @@ import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginPageUi extends StatefulWidget {
-  const LoginPageUi({super.key});
+class CreateAccountPageUI extends StatefulWidget {
+  const CreateAccountPageUI({super.key});
 
   @override
-  State<LoginPageUi> createState() => _LoginPageUiState();
+  State<CreateAccountPageUI> createState() => _CreateAccountPageUIState();
 }
 
-class _LoginPageUiState extends State<LoginPageUi> {
+class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         color: ApplicationColors.white,
@@ -27,26 +25,19 @@ class _LoginPageUiState extends State<LoginPageUi> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(
-              flex: 13,
-              child: Image.asset(
-                "lib/src/core/assets/marketing.jpg",
-                width: width,
-                height: height,
-                fit: BoxFit.fill,
-              ),
-            ),
             const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Center(
-              child: Flexible(
-                flex: 1,
+            Flexible(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Text(
-                  l10n.fakeShoppingApp,
+                  l10n.createAccountOnFakeShopping,
+                  textAlign: TextAlign.center,
                   style: textTheme.titleMedium?.copyWith(
-                  color: ApplicationColors.red,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 32,
-                ),
+                    color: ApplicationColors.red,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
+                  ),
                 ),
               ),
             ),
@@ -93,21 +84,9 @@ class _LoginPageUiState extends State<LoginPageUi> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: ProductButton(
-                  textButton: l10n.signIn,
-                  borderRadius: BorderRadius.circular(16.0),
-                  onPressed: () => context.go('/productsPages'),
-                ),
-              ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: ProductButton(
                   textButton: l10n.createAccount,
                   borderRadius: BorderRadius.circular(16.0),
-                  onPressed: () => context.go('/createAccountPage'),
+                  onPressed: () => context.go('/productsPages'),
                 ),
               ),
             ),

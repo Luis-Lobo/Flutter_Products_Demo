@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/create_account_page_ui.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/login_page_ui.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_details_ui.dart';
@@ -34,6 +35,12 @@ final GoRouter _router = GoRouter(
           path: 'productsPages',
           builder: (BuildContext context, GoRouterState state) {
             return ProductsPagesUI();
+          },
+        ),
+        GoRoute(
+          path: 'createAccountPage',
+          builder: (BuildContext context, GoRouterState state) {
+            return const CreateAccountPageUI();
           },
         ),
       ],
