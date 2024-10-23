@@ -42,6 +42,13 @@ class ProductsCubit extends Cubit<ProductsState> {
     ));
   }
 
+  void goToPaymentPage() {
+    emit(state.copyWith(
+      uiState: ProductUIState.loading,
+      uiPages: ProductUIPages.paymentPage,
+    ));
+  }
+
   void addToCart({required ProductModel product, required List<ProductModel> cartList}) {
     List<ProductModel> updateList = List.from(cartList);
     updateList.add(product);

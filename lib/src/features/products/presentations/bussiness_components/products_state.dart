@@ -52,6 +52,7 @@ class ProductsState extends Equatable {
   bool get isHomePage => uiPages == ProductUIPages.homePage;
   bool get isCartPage => uiPages == ProductUIPages.cartPage;
   bool get isSearchPage => uiPages == ProductUIPages.searchPage;
+  bool get isPaymentPage => uiPages == ProductUIPages.paymentPage;
 
   @override
   List<Object?> get props => [
@@ -79,4 +80,4 @@ enum ProductUIState {
   bool get isLoading => this == ProductUIState.loading || this == ProductUIState.initial;
 }
 
-enum ProductUIPages { homePage, cartPage, searchPage }
+enum ProductUIPages { homePage, cartPage, searchPage, paymentPage }

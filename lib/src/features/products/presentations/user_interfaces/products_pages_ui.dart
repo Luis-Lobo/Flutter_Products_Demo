@@ -8,6 +8,7 @@ import 'package:flutter_products_demo/src/features/products/presentations/bussin
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_bottom_nav.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_drawer.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_cart_ui.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_payment_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_search_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/products_home_ui.dart';
 
@@ -46,6 +47,7 @@ class ProductsPagesUI extends HookWidget {
                   if (state.isHomePage) const ProductsHomeUI(),
                   if (state.isCartPage) const ProductCardUI(),
                   if (state.isSearchPage) const ProductSearchUI(),
+                  if (state.isPaymentPage) const ProductPaymentUI(),
                 ],
               ),
             ),

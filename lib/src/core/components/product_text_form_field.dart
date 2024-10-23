@@ -8,6 +8,7 @@ class ProductTextFormField extends StatelessWidget {
   final bool obscureText;
   final Icon? prefixIcon;
   final IconButton? sufixButtonIcon;
+  final FormFieldValidator? validator;
   final ValueChanged? onChanged;
   final VoidCallback? onTap;
 
@@ -18,6 +19,7 @@ class ProductTextFormField extends StatelessWidget {
     this.obscureText = false, 
     this.prefixIcon,
     this.sufixButtonIcon,
+    this.validator,
     this.onChanged,
     this.onTap,
     super.key});
@@ -43,6 +45,7 @@ class ProductTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: sufixButtonIcon,
       ),
+      validator: validator,
       onChanged: onChanged,
       onTap: onTap,
     );

@@ -40,9 +40,9 @@ class _LoginPageUiState extends State<LoginPageUi> {
                 ),
               ),
               const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
-              Center(
-                child: Flexible(
-                  flex: 1,
+              Flexible(
+                flex: 1,
+                child: Center(
                   child: Text(
                     l10n.fakeShoppingApp,
                     style: textTheme.titleMedium?.copyWith(
@@ -120,7 +120,7 @@ class _LoginPageUiState extends State<LoginPageUi> {
                     onPressed: () => context.go('/createAccountPage'),
                   ),
                 ),
-              ),
+              ), 
             ],
           ),
         ),

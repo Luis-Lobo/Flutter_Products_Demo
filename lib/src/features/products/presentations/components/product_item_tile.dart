@@ -26,9 +26,7 @@ class ProductItemTile extends StatelessWidget {
         leading: Image.network(productModel.image, width: 50, height: 50, fit: BoxFit.cover),
         title: Text(productModel.title),
         trailing: IconButton(
-          //icon: Icon(productModel.isAdded ? Icons.remove_circle_outline : Icons.add_circle_outline),
-          icon: const Icon(Icons.remove_circle_outline),
-          //color: item.isAdded ? Colors.red : Colors.green,
+          icon: const Icon(Icons.delete_forever_rounded),
           color:  Colors.red,
           onPressed: remove,
         ),
