@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter_Products_Demo",
+            "name": "Flutter_Products_Demo (debug mode)",
             "request": "launch",
             "type": "dart"
         },

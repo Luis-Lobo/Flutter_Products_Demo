@@ -8,8 +8,8 @@ import 'package:flutter_products_demo/src/features/products/presentations/bussin
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_item_tile.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
 
-class ProductCardPage extends HookWidget {
-  const ProductCardPage({super.key});
+class ProductCardUI extends HookWidget {
+  const ProductCardUI({super.key});
 
   @override
   Widget build(BuildContext context) {

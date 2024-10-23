@@ -2,18 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 
 class ProductTextFormField extends StatelessWidget {
-  final bool autofocus;
   final String? hintText;
   final TextInputType? keyboardType;
   final String? labelText;
   final bool obscureText;
+  final Icon? prefixIcon;
+  final IconButton? sufixButtonIcon;
+  final ValueChanged? onChanged;
+  final VoidCallback? onTap;
 
-  const ProductTextFormField({this.autofocus = false, this.hintText, this.keyboardType, this.labelText, this.obscureText = false, super.key});
+  const ProductTextFormField({
+    this.hintText, 
+    this.keyboardType, 
+    this.labelText, 
+    this.obscureText = false, 
+    this.prefixIcon,
+    this.sufixButtonIcon,
+    this.onChanged,
+    this.onTap,
+    super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: autofocus,
       obscureText: obscureText,
       keyboardType: keyboardType,
       cursorColor: ApplicationColors.red,
@@ -29,8 +40,11 @@ class ProductTextFormField extends StatelessWidget {
           borderSide: const BorderSide(color: ApplicationColors.red, width: 4.0),
           borderRadius: BorderRadius.circular(32),
         ),
-
+        prefixIcon: prefixIcon,
+        suffixIcon: sufixButtonIcon,
       ),
+      onChanged: onChanged,
+      onTap: onTap,
     );
   }
 }

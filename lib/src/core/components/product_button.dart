@@ -17,6 +17,7 @@ class ProductButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: ApplicationColors.black36,
+        elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,
         ),

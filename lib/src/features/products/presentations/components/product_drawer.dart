@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDrawer extends StatelessWidget {
   final GestureTapCallback? onLogoutTap;
@@ -71,7 +72,7 @@ class ProductDrawer extends StatelessWidget {
                       color: ApplicationColors.white,
                     ),
                   ),
-                  onTap: () {},
+                  onTap: ()=> context.go('/'),
                 ),
               ],
             )),

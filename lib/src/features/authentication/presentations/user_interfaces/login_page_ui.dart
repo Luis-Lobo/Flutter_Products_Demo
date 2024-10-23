@@ -14,104 +14,115 @@ class LoginPageUi extends StatefulWidget {
 }
 
 class _LoginPageUiState extends State<LoginPageUi> {
+  bool _obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        color: ApplicationColors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              flex: 13,
-              child: Image.asset(
-                "lib/src/core/assets/marketing.jpg",
-                width: width,
-                height: height,
-                fit: BoxFit.fill,
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Container(
+          color: ApplicationColors.white,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                flex: 13,
+                child: Image.asset(
+                  "lib/src/core/assets/marketing.jpg",
+                  height: height * 0.5,
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Center(
-              child: Flexible(
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
+              Center(
+                child: Flexible(
+                  flex: 1,
+                  child: Text(
+                    l10n.fakeShoppingApp,
+                    style: textTheme.titleMedium?.copyWith(
+                      color: ApplicationColors.red,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 32,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: ProductTextFormField(
+                    hintText: l10n.emailAddress,
+                    labelText: l10n.emailAddress,
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIcon: const Icon(Icons.email),
+                  ),
+                ),
+              ),
+              const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: ProductTextFormField(
+                    hintText: l10n.password,
+                    labelText: l10n.password,
+                    obscureText: _obscureText,
+                    prefixIcon: const Icon(Icons.lock),
+                    sufixButtonIcon: IconButton(
+                      icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                      onPressed: () => setState(() {
+                        _obscureText = !_obscureText;
+                      }),
+                    ), 
+                  ),
+                ),
+              ),
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
+              Flexible(
                 flex: 1,
                 child: Text(
-                  l10n.fakeShoppingApp,
+                  l10n.forgotPassword,
+                  textAlign: TextAlign.center,
                   style: textTheme.titleMedium?.copyWith(
-                  color: ApplicationColors.red,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 32,
-                ),
-                ),
-              ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Flexible(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: ProductTextFormField(
-                  autofocus: true,
-                  hintText: l10n.emailAddress,
-                  labelText: l10n.emailAddress,
-                  keyboardType: TextInputType.emailAddress,
+                    color: ApplicationColors.darkBlue,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Flexible(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: ProductTextFormField(
-                  hintText: l10n.password,
-                  labelText: l10n.password,
-                  obscureText: true,
+              const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: ProductButton(
+                    textButton: l10n.signIn,
+                    borderRadius: BorderRadius.circular(16.0),
+                    onPressed: () => context.go('/productsPages'),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
-            Flexible(
-              flex: 1,
-              child: Text(
-                l10n.forgotPassword,
-                textAlign: TextAlign.center,
-                style: textTheme.titleMedium?.copyWith(
-                  color: ApplicationColors.darkBlue,
-                  fontWeight: FontWeight.w400,
+              const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: ProductButton(
+                    textButton: l10n.createAccount,
+                    borderRadius: BorderRadius.circular(16.0),
+                    onPressed: () => context.go('/createAccountPage'),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: ProductButton(
-                  textButton: l10n.signIn,
-                  borderRadius: BorderRadius.circular(16.0),
-                  onPressed: () => context.go('/productsPages'),
-                ),
-              ),
-            ),
-            const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: ProductButton(
-                  textButton: l10n.createAccount,
-                  borderRadius: BorderRadius.circular(16.0),
-                  onPressed: () => context.go('/createAccountPage'),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

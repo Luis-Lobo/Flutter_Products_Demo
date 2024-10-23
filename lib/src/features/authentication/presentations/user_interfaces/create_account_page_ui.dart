@@ -47,7 +47,6 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: ProductTextFormField(
-                  autofocus: true,
                   hintText: l10n.emailAddress,
                   labelText: l10n.emailAddress,
                   keyboardType: TextInputType.emailAddress,

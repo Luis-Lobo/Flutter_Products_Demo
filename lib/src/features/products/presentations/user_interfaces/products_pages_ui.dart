@@ -7,7 +7,8 @@ import 'package:flutter_products_demo/src/features/products/presentations/bussin
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_bottom_nav.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_drawer.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_cart_page_ui.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_cart_ui.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_search_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/products_home_ui.dart';
 
 class ProductsPagesUI extends HookWidget {
@@ -43,7 +44,8 @@ class ProductsPagesUI extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (state.isHomePage) const ProductsHomeUI(),
-                  if (state.isCartPage) const ProductCardPage(),
+                  if (state.isCartPage) const ProductCardUI(),
+                  if (state.isSearchPage) const ProductSearchUI(),
                 ],
               ),
             ),
@@ -67,7 +69,7 @@ class ProductsPagesUI extends HookWidget {
                     ProductBottomNav(
                       icon: Icons.search,
                       title: l10n.search,
-                      onTap: () {},
+                      onTap: () => cubit.goToSearchPage(),
                     ),
                     ProductBottomNav(
                       icon: Icons.shopping_cart,

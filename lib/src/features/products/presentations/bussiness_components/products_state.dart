@@ -7,6 +7,7 @@ class ProductsState extends Equatable {
 
   final List<ProductModel> products;
   final List<ProductModel> cartList;
+  final List<ProductModel> filterList;
   final double totalPurchasePrice;
   final bool? addProductInCartList;
   final bool? removeProductInCartList;
@@ -21,6 +22,7 @@ class ProductsState extends Equatable {
     required this.uiPages,
     this.products = const [],
     this.cartList = const [],
+    this.filterList = const [],
     this.totalPurchasePrice = 0.0,
     this.addProductInCartList = false,
     this.removeProductInCartList = false,
@@ -31,6 +33,7 @@ class ProductsState extends Equatable {
     ProductUIPages? uiPages,
     List<ProductModel>? products,
     List<ProductModel>? cartList,
+    List<ProductModel>? filterList,
     double? totalPurchasePrice,
     bool? addProductInCartList,
     bool? removeProductInCartList,
@@ -40,6 +43,7 @@ class ProductsState extends Equatable {
         uiPages: uiPages ?? this.uiPages,
         products: products ?? this.products,
         cartList: cartList ?? this.cartList,
+        filterList: filterList ?? this.filterList,
         totalPurchasePrice: totalPurchasePrice ?? this.totalPurchasePrice,
         addProductInCartList: addProductInCartList ?? this.addProductInCartList,
         removeProductInCartList: removeProductInCartList ?? this.removeProductInCartList,
@@ -47,6 +51,7 @@ class ProductsState extends Equatable {
 
   bool get isHomePage => uiPages == ProductUIPages.homePage;
   bool get isCartPage => uiPages == ProductUIPages.cartPage;
+  bool get isSearchPage => uiPages == ProductUIPages.searchPage;
 
   @override
   List<Object?> get props => [
@@ -54,6 +59,7 @@ class ProductsState extends Equatable {
     uiPages, 
     products, 
     cartList, 
+    filterList, 
     totalPurchasePrice, 
     addProductInCartList, 
     removeProductInCartList,
@@ -73,4 +79,4 @@ enum ProductUIState {
   bool get isLoading => this == ProductUIState.loading || this == ProductUIState.initial;
 }
 
-enum ProductUIPages { homePage, cartPage }
+enum ProductUIPages { homePage, cartPage, searchPage }

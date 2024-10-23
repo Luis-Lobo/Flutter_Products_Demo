@@ -35,6 +35,13 @@ class ProductsCubit extends Cubit<ProductsState> {
     ));
   }
 
+  void goToSearchPage() {
+    emit(state.copyWith(
+      uiState: ProductUIState.loading,
+      uiPages: ProductUIPages.searchPage,
+    ));
+  }
+
   void addToCart({required ProductModel product, required List<ProductModel> cartList}) {
     List<ProductModel> updateList = List.from(cartList);
     updateList.add(product);
@@ -65,10 +72,27 @@ class ProductsCubit extends Cubit<ProductsState> {
     ));
   }
 
-  void resetStatesSnackBar(){
+  void resetStatesSnackBar() {
     emit(state.copyWith(
       addProductInCartList: false,
       removeProductInCartList: false,
     ));
+  }
+
+  void filterProduct({String? query}) {
+    if (query == null || query.isEmpty) {
+
+      emit(state.copyWith(
+        filterList: state.products,
+      ));
+
+    } else {
+      List<ProductModel> filterList = state.products.where((model) => 
+        model.title.toLowerCase().contains(query.toLowerCase())).toList();
+
+      emit(state.copyWith(
+        filterList: filterList,
+      ));
+    }
   }
 }
