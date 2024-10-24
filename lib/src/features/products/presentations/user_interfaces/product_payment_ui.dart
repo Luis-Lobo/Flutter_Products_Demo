@@ -120,6 +120,8 @@ class ProductPaymentUI extends HookWidget {
                           hintText: l10n.expirationDate,
                           labelText: l10n.expirationDate,
                           controller: expirationDateController,
+                          maxLenght: 5,
+                          errorMaxLines: 5,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return l10n.expirationDateInsert;
@@ -140,6 +142,7 @@ class ProductPaymentUI extends HookWidget {
                           labelText: l10n.securityCode,
                           controller: securityCodeController,
                           maxLenght: 3,
+                          errorMaxLines: 5,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return l10n.securityCodeInsert;

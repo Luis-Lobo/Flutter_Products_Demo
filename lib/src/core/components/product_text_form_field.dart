@@ -3,6 +3,7 @@ import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 
 class ProductTextFormField extends StatelessWidget {
   final TextEditingController? controller;
+  final int? errorMaxLines;
   final String? hintText;
   final TextInputType? keyboardType;
   final String? labelText;
@@ -16,7 +17,9 @@ class ProductTextFormField extends StatelessWidget {
   final FormFieldValidator? validator;
 
   const ProductTextFormField(
-      {this.controller,
+      {
+      this.controller,
+      this.errorMaxLines,
       this.hintText,
       this.keyboardType,
       this.labelText,
@@ -52,6 +55,7 @@ class ProductTextFormField extends StatelessWidget {
         ),
         prefixIcon: prefixIcon,
         suffixIcon: sufixButtonIcon,
+        errorMaxLines: errorMaxLines,
       ),
       validator: validator,
       onChanged: onChanged,

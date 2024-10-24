@@ -16,7 +16,7 @@
     "description" : "Description: ",
     "emailAddress": "Email Address",
     "expirationDate": "Expiration Date",
-    "expirationDateFormat": "Use MM/AA.",
+    "expirationDateFormat": "Invalid date format. Use MM/AA.",
     "expirationDateInsert": "Please, insert expiration date.",
     "fakeShoppingApp" : "Fake Shopping App",
     "forgotPassword" : "Forgot Password?",
