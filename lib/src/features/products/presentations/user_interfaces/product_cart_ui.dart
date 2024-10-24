@@ -29,7 +29,7 @@ class ProductCardUI extends HookWidget {
         direction: Axis.vertical,
         children: [
           SizedBox(
-              height: height * 0.7,
+              height: height,
               child: state.cartList.isEmpty
                   ? Center(
                       child: Text(
@@ -44,6 +44,7 @@ class ProductCardUI extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
+                          flex: 7,
                           child: ListView.builder(
                               itemCount: state.cartList.length,
                               itemBuilder: (BuildContext context, int index) {
@@ -56,32 +57,39 @@ class ProductCardUI extends HookWidget {
                                 );
                               }),
                         ),
-                        Card(
-                          child: Column(
-                            children: [
-                              Text(
-                                l10n.totalPurchasePrice,
-                                style: textTheme.titleLarge?.copyWith(
-                                  color: ApplicationColors.black36,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
+                        
+                        Flexible(
+                          flex: 1,
+                          child: Card(
+                            child: Column(
+                              children: [
+                                Text(
+                                  l10n.totalPurchasePrice,
+                                  style: textTheme.titleLarge?.copyWith(
+                                    color: ApplicationColors.black36,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 20,
+                                  ),
                                 ),
+                                Text(
+                              state.totalPurchasePrice.toStringAsFixed(2),
+                              style: textTheme.titleLarge?.copyWith(
+                                color: ApplicationColors.black36,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 32,
                               ),
-                              Text(
-                            state.totalPurchasePrice.toStringAsFixed(2),
-                            style: textTheme.titleLarge?.copyWith(
-                              color: ApplicationColors.black36,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 32,
+                            ),
+                              ],
                             ),
                           ),
-                            ],
-                          ),
                         ),
-                        ProductButton(
-                          textButton: l10n.continuee,
-                          borderRadius: BorderRadius.circular(16.0),
-                          onPressed: () => cubit.goToPaymentPage(),
+                        Flexible(
+                          flex: 2,
+                          child: ProductButton(
+                            textButton: l10n.continuee,
+                            borderRadius: BorderRadius.circular(16.0),
+                            onPressed: () => cubit.goToPaymentPage(),
+                          ),
                         )
                       ],
                     )),

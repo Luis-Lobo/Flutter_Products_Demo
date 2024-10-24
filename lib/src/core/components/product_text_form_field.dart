@@ -2,33 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 
 class ProductTextFormField extends StatelessWidget {
+  final TextEditingController? controller;
   final String? hintText;
   final TextInputType? keyboardType;
   final String? labelText;
+  final int? maxLenght;
   final bool obscureText;
+  final ValueChanged? onChanged;
+  final ValueChanged? onSaved;
+  final VoidCallback? onTap;
   final Icon? prefixIcon;
   final IconButton? sufixButtonIcon;
   final FormFieldValidator? validator;
-  final ValueChanged? onChanged;
-  final VoidCallback? onTap;
 
-  const ProductTextFormField({
-    this.hintText, 
-    this.keyboardType, 
-    this.labelText, 
-    this.obscureText = false, 
-    this.prefixIcon,
-    this.sufixButtonIcon,
-    this.validator,
-    this.onChanged,
-    this.onTap,
-    super.key});
+  const ProductTextFormField(
+      {this.controller,
+      this.hintText,
+      this.keyboardType,
+      this.labelText,
+      this.maxLenght,
+      this.obscureText = false,
+      this.onChanged,
+      this.onSaved,
+      this.onTap,
+      this.prefixIcon,
+      this.sufixButtonIcon,
+      this.validator,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
       keyboardType: keyboardType,
+      controller: controller,
+      maxLength: maxLenght,
       cursorColor: ApplicationColors.red,
       decoration: InputDecoration(
         labelText: labelText,
@@ -47,6 +55,7 @@ class ProductTextFormField extends StatelessWidget {
       ),
       validator: validator,
       onChanged: onChanged,
+      onSaved: onSaved,
       onTap: onTap,
     );
   }
