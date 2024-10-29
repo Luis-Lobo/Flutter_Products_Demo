@@ -42,17 +42,17 @@ Test Units,
 
 |Login||Home||Search|
 |-----||-----||-----|
-|![Login](D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/login.png)||![Home](D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/home.png)||![Search](D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/login.png)|
+|![Login](lib/src/core/assets/prints/login.png)||![Home](D:lib/src/core/assets/prints/home.png)||![Search](lib/src/core/assets/prints/login.png)|
 
-<img src="D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/login.png" alt="Login">
+<img src="lib/src/core/assets/prints/login.png" alt="Login">
 
-<img src="D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/home.png" alt="Home">
+<img src="lib/src/core/assets/prints/home.png" alt="Home">
 
-<img src="D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/search.png" alt="Search">
+<img src="lib/src/core/assets/prints/search.png" alt="Search">
 
-<img src="D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/product_details.png" alt="Product Details">
+<img src="lib/src/core/assets/prints/product_details.png" alt="Product Details">
 
-<img src="D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/purchase.png" alt="Purchase">
+<img src="lib/src/core/assets/prints/purchase.png" alt="Purchase">
 
-<img src="D:/flutter_projects/Flutter_Products_Demo/lib/src/core/assets/prints/form.png" alt="form">
+<img src="lib/src/core/assets/prints/form.png" alt="form">
 
