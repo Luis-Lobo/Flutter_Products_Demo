@@ -22,7 +22,7 @@ Welcome to the Fake Shopping App! This application is designed to make it easy t
 
 - **Profile Drawer**: A simple customizable profile drawer with account details and logout.
 
-- **Features in development**
+- **Features in development:**
 Recover Password
 Register new user with image 
 
