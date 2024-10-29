@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/components/product_bottom_nav.dart';
+import 'package:flutter_products_demo/src/core/components/product_bottom_nav.dart';
 import 'package:flutter_products_demo/src/core/components/product_drawer.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_cart_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_payment_ui.dart';

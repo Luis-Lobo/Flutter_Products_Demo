@@ -5,6 +5,7 @@ class ProductsState extends Equatable {
   final ProductUIState uiState;
   final ProductUIPages uiPages;
 
+  final List<String> imagesUrls;
   final List<ProductModel> products;
   final List<ProductModel> cartList;
   final List<ProductModel> filterList;
@@ -20,6 +21,7 @@ class ProductsState extends Equatable {
   const ProductsState({
     required this.uiState,
     required this.uiPages,
+    this.imagesUrls = const [],
     this.products = const [],
     this.cartList = const [],
     this.filterList = const [],
@@ -31,6 +33,7 @@ class ProductsState extends Equatable {
   ProductsState copyWith({
     ProductUIState? uiState,
     ProductUIPages? uiPages,
+    List<String>? imagesUrls,
     List<ProductModel>? products,
     List<ProductModel>? cartList,
     List<ProductModel>? filterList,
@@ -41,6 +44,7 @@ class ProductsState extends Equatable {
       ProductsState(
         uiState: uiState ?? this.uiState,
         uiPages: uiPages ?? this.uiPages,
+        imagesUrls: imagesUrls ?? this.imagesUrls,
         products: products ?? this.products,
         cartList: cartList ?? this.cartList,
         filterList: filterList ?? this.filterList,
@@ -56,15 +60,16 @@ class ProductsState extends Equatable {
 
   @override
   List<Object?> get props => [
-    uiState, 
-    uiPages, 
-    products, 
-    cartList, 
-    filterList, 
-    totalPurchasePrice, 
-    addProductInCartList, 
-    removeProductInCartList,
-    ];
+        uiState,
+        uiPages,
+        imagesUrls,
+        products,
+        cartList,
+        filterList,
+        totalPurchasePrice,
+        addProductInCartList,
+        removeProductInCartList,
+      ];
 }
 
 enum ProductUIState {

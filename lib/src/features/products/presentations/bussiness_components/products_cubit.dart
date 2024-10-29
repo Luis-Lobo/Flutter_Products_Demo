@@ -14,10 +14,18 @@ class ProductsCubit extends Cubit<ProductsState> {
   void initialize({ProductUIPages? page}) async {
     emit(state.copyWith(uiState: ProductUIState.loading));
 
+    List<String> imagesUrls = [
+      "lib/src/core/assets/banner1.jpg",
+      "lib/src/core/assets/banner2.jpg",
+      "lib/src/core/assets/banner3.jpg",
+      "lib/src/core/assets/banner4.jpg",
+    ];
+
     try {
       final products = await _useCase.getProducts();
 
       emit(state.copyWith(
+        imagesUrls: imagesUrls,
         products: products,
         uiPages: ProductUIPages.homePage,
       ));
@@ -88,14 +96,11 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   void filterProduct({String? query}) {
     if (query == null || query.isEmpty) {
-
       emit(state.copyWith(
         filterList: state.products,
       ));
-
     } else {
-      List<ProductModel> filterList = state.products.where((model) => 
-        model.title.toLowerCase().contains(query.toLowerCase())).toList();
+      List<ProductModel> filterList = state.products.where((model) => model.title.toLowerCase().contains(query.toLowerCase())).toList();
 
       emit(state.copyWith(
         filterList: filterList,

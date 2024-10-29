@@ -49,6 +49,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   firebase_auth: ^5.3.1
   firebase_core: ^3.6.0
+  carousel_slider: ^5.0.0
 
 
 dev_dependencies:
@@ -82,6 +83,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/src/core/assets/marketing.jpg
+    - lib/src/core/assets/banner1.jpg
+    - lib/src/core/assets/banner2.jpg
+    - lib/src/core/assets/banner3.jpg
+    - lib/src/core/assets/banner4.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

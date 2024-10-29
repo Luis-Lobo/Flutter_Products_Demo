@@ -1,10 +1,13 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_card_home.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_carousel.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,6 +20,7 @@ class ProductsHomeUI extends HookWidget {
     final width = MediaQuery.of(context).size.width;
     final cubit = context.read<ProductsCubit>();
     final l10n = AppLocalizations.of(context)!;
+    final CarouselSliderController controller = CarouselSliderController();
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, currentState) {
       if (currentState.addProductInCartList == true) {
@@ -29,11 +33,10 @@ class ProductsHomeUI extends HookWidget {
         children: [
           Column(
             children: [
-              Container(
-                height: height * 0.3,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage("lib/src/core/assets/marketing.jpg"), fit: BoxFit.fitWidth),
-                ),
+              const SizedBox(height: ApplicationStylesConstants.spacing20Sp),
+              ProductCarousel(
+                imagesUrls: state.imagesUrls,
+                controller: controller,
               ),
               SizedBox(
                 height: height * 0.6,
@@ -42,15 +45,12 @@ class ProductsHomeUI extends HookWidget {
                     itemCount: state.products.length,
                     itemBuilder: (BuildContext ctx, index) {
                       final product = state.products.elementAt(index);
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: width * 0.7,
-                          child: ProductCardHome(
-                            productModel: product,
-                            onTap: () => context.go('/productDetails', extra: product),
-                            addToPurchaseList: () => cubit.addToCart(product: product, cartList: state.cartList),
-                          ),
+                      return SizedBox(
+                        width: width * 0.7,
+                        child: ProductCardHome(
+                          productModel: product,
+                          onTap: () => context.go('/productDetails', extra: product),
+                          addToPurchaseList: () => cubit.addToCart(product: product, cartList: state.cartList),
                         ),
                       );
                     }),
