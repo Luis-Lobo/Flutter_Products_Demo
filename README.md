@@ -47,7 +47,7 @@ Test Units,
     <td><img src="lib/src/core/assets/prints/search.png" alt="Search"  width="150" height="300"/></td>
   </tr>
   <tr>
-    <td><img src="lib/src/core/assets/prints/product_details.png" alt="Product Details"  width="150" height="300"/></td>
+    <td><img src="lib/src/core/assets/prints/product_details.png" alt="Product Details"  width="300" height="300"/></td>
     <td><img src="lib/src/core/assets/prints/purchase.png" alt="Purchase"  width="150" height="300"/></td>
     <td><img  src="lib/src/core/assets/prints/form.png" alt="form"  width="150" height="300"/></td>
   </tr>
