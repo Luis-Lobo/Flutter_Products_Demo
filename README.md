@@ -40,18 +40,9 @@ Test Units,
 
 ## Pictures
 
-<div class="box">
-    <img src="lib/src/core/assets/prints/login.png" alt="Login"/>
-    <span> Login </span>
-</div>
-<div class="box">
-    <img src="lib/src/core/assets/prints/home.png" alt="Home"/>
-    <span> Home </span>
-</div>
-<div class="box">
-    <img src="lib/src/core/assets/prints/search.png" alt="Search"/>
-    <span> Search</span>
-</div>
+| ![Login](lib/src/core/assets/prints/login.png) | ![Home](lib/src/core/assets/prints/home.png) | ![Search](lib/src/core/assets/prints/search.png) |
+|------------------------------------------------|------------------------------------------------|------------------------------------------------|
+| ![Product Details](lib/src/core/assets/prints/product_details.png) | ![Purchase](lib/src/core/assets/prints/purchase.png) | ![Form](lib/src/core/assets/prints/form.png) |
 
 <img src="lib/src/core/assets/prints/login.png" alt="Login">
 
@@ -63,11 +54,4 @@ Test Units,
 
 <img src="lib/src/core/assets/prints/purchase.png" alt="Purchase">
 
-<img src="lib/src/core/assets/prints/form.png" alt="form">
-
-<style>
-div.box {
-	width: 150px;
-	display: inline-block;
-}
-</style>
+<img src="lib/src/core/assets/prints/form.png" alt="form"> 
