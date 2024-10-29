@@ -44,14 +44,16 @@ Test Units,
 |------------------------------------------------|------------------------------------------------|------------------------------------------------|
 | ![Product Details](lib/src/core/assets/prints/product_details.png) | ![Purchase](lib/src/core/assets/prints/purchase.png) | ![Form](lib/src/core/assets/prints/form.png) |
 
-<img src="lib/src/core/assets/prints/login.png" alt="Login">
 
-<img src="lib/src/core/assets/prints/home.png" alt="Home">
-
-<img src="lib/src/core/assets/prints/search.png" alt="Search">
-
-<img src="lib/src/core/assets/prints/product_details.png" alt="Product Details">
-
-<img src="lib/src/core/assets/prints/purchase.png" alt="Purchase">
-
-<img src="lib/src/core/assets/prints/form.png" alt="form"> 
+<table>
+  <tr>
+    <td><img src="lib/src/core/assets/prints/login.png" alt="Login" width="150" /></td>
+    <td><img src="lib/src/core/assets/prints/home.png" alt="Home" width="150" /></td>
+    <td><img src="lib/src/core/assets/prints/search.png" alt="Search" width="150" /></td>
+  </tr>
+  <tr>
+    <td><img src="lib/src/core/assets/prints/product_details.png" alt="Product Details" width="150" /></td>
+    <td><img src="lib/src/core/assets/prints/purchase.png" alt="Purchase" width="150" /></td>
+    <td><img  src="lib/src/core/assets/prints/form.png" alt="form" width="150" /></td>
+  </tr>
+</table>
