@@ -57,11 +57,11 @@ class ProductCardUI extends HookWidget {
                                 );
                               }),
                         ),
-                        
                         Flexible(
-                          flex: 1,
+                          flex: 2,
                           child: Card(
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   l10n.totalPurchasePrice,

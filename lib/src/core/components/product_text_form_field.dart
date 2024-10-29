@@ -7,7 +7,7 @@ class ProductTextFormField extends StatelessWidget {
   final String? hintText;
   final TextInputType? keyboardType;
   final String? labelText;
-  final int? maxLenght;
+  final int? maxLength;
   final bool obscureText;
   final ValueChanged? onChanged;
   final ValueChanged? onSaved;
@@ -23,7 +23,7 @@ class ProductTextFormField extends StatelessWidget {
       this.hintText,
       this.keyboardType,
       this.labelText,
-      this.maxLenght,
+      this.maxLength,
       this.obscureText = false,
       this.onChanged,
       this.onSaved,
@@ -39,7 +39,7 @@ class ProductTextFormField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       controller: controller,
-      maxLength: maxLenght,
+      maxLength: maxLength,
       cursorColor: ApplicationColors.red,
       decoration: InputDecoration(
         labelText: labelText,

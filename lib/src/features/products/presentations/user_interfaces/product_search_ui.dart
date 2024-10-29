@@ -37,7 +37,7 @@ class ProductSearchUI extends HookWidget {
           ),
           SizedBox(height: height * 0.05),
           SizedBox(
-                  height: height * 0.55,
+                  height: height * 0.6,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: state.filterList.length,

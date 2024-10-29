@@ -35,28 +35,25 @@ class ProductsHomeUI extends HookWidget {
                   image: DecorationImage(image: AssetImage("lib/src/core/assets/marketing.jpg"), fit: BoxFit.fitWidth),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: SizedBox(
-                  height: height * 0.55,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: state.products.length,
-                      itemBuilder: (BuildContext ctx, index) {
-                        final product = state.products.elementAt(index);
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            width: width * 0.7,
-                            child: ProductCardHome(
-                              productModel: product,
-                              onTap: () => context.go('/productDetails', extra: product),
-                              addToPurchaseList: () => cubit.addToCart(product: product, cartList: state.cartList),
-                            ),
+              SizedBox(
+                height: height * 0.6,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.products.length,
+                    itemBuilder: (BuildContext ctx, index) {
+                      final product = state.products.elementAt(index);
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: width * 0.7,
+                          child: ProductCardHome(
+                            productModel: product,
+                            onTap: () => context.go('/productDetails', extra: product),
+                            addToPurchaseList: () => cubit.addToCart(product: product, cartList: state.cartList),
                           ),
-                        );
-                      }),
-                ),
+                        ),
+                      );
+                    }),
               ),
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
@@ -11,6 +12,11 @@ class ProductDrawer extends StatelessWidget {
     this.onLogoutTap,
     super.key,
   });
+
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    context.go('/');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +78,7 @@ class ProductDrawer extends StatelessWidget {
                       color: ApplicationColors.white,
                     ),
                   ),
-                  onTap: ()=> context.go('/'),
+                  onTap: () => logout(context),
                 ),
               ],
             )),

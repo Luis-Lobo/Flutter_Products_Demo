@@ -54,7 +54,7 @@ class ProductPaymentUI extends HookWidget {
         children: [
           Card(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            //  crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   l10n.totalPurchasePrice,
@@ -85,7 +85,7 @@ class ProductPaymentUI extends HookWidget {
                     hintText: l10n.cardNumber,
                     labelText: l10n.cardNumber,
                     controller: cardNumberController,
-                    maxLenght: 16,
+                    maxLength: 16,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return l10n.cardNumberInsert;
@@ -120,7 +120,7 @@ class ProductPaymentUI extends HookWidget {
                           hintText: l10n.expirationDate,
                           labelText: l10n.expirationDate,
                           controller: expirationDateController,
-                          maxLenght: 5,
+                          maxLength: 5,
                           errorMaxLines: 5,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -141,7 +141,7 @@ class ProductPaymentUI extends HookWidget {
                           hintText: l10n.securityCode,
                           labelText: l10n.securityCode,
                           controller: securityCodeController,
-                          maxLenght: 3,
+                          maxLength: 3,
                           errorMaxLines: 5,
                           validator: (value) {
                             if (value == null || value.isEmpty) {

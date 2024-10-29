@@ -25,10 +25,11 @@ class ProductButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         textButton,
+        textAlign: TextAlign.center,
         style: textTheme.titleLarge?.copyWith(
           color: ApplicationColors.white,
           fontWeight: FontWeight.w700,
-          fontSize: 24,
+          fontSize: 18,
         ),
       ),
     );

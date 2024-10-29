@@ -6,7 +6,7 @@ import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_bottom_nav.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/components/product_drawer.dart';
+import 'package:flutter_products_demo/src/core/components/product_drawer.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_cart_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_payment_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_search_ui.dart';
@@ -37,26 +37,23 @@ class ProductsPagesUI extends HookWidget {
       builder: (context, state) {
         return Scaffold(
           key: _scaffoldKey,
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (state.isHomePage) const ProductsHomeUI(),
-                  if (state.isCartPage) const ProductCardUI(),
-                  if (state.isSearchPage) const ProductSearchUI(),
-                  if (state.isPaymentPage) const ProductPaymentUI(),
-                ],
-              ),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (state.isHomePage) const ProductsHomeUI(),
+                if (state.isCartPage) const ProductCardUI(),
+                if (state.isSearchPage) const ProductSearchUI(),
+                if (state.isPaymentPage) const ProductPaymentUI(),
+              ],
             ),
           ),
           drawer: const ProductDrawer(),
           bottomNavigationBar: Builder(builder: (context) {
             return SafeArea(
               child: Container(
-                height: height * 0.06,
+                height: height * 0.1,
                 decoration: const BoxDecoration(
                   color: ApplicationColors.red,
                 ),

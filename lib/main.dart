@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -10,7 +12,22 @@ import 'package:flutter_products_demo/src/features/products/presentations/bussin
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/products_pages_ui.dart';
 import 'package:go_router/go_router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyCs46ML_i-f2HXHHL0e_IJ85ChlI-IQ73g",
+            authDomain: "fake-shopping-app-99d76.firebaseapp.com",
+            projectId: "fake-shopping-app-99d76",
+            storageBucket: "fake-shopping-app-99d76.appspot.com",
+            messagingSenderId: "1092077678198",
+            appId: "1:1092077678198:web:64633c4056e0c8e9757957",
+            measurementId: "G-04XWQRKRQQ"));
+  } else {
+    await Firebase.initializeApp();
+  }
   runApp(const MyApp());
 }
 
@@ -32,7 +49,7 @@ final GoRouter _router = GoRouter(
           },
         ),
         GoRoute(
-          path: 'productsPages',
+          path: 'productsPage',
           builder: (BuildContext context, GoRouterState state) {
             return ProductsPagesUI();
           },
@@ -68,6 +85,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routerConfig: _router,
+     //   routeInformationParser: _router.routeInformationParser,
+     //   routerDelegate: _router.routerDelegate,
       ),
     );
   }
