@@ -15,10 +15,10 @@ class ProductsCubit extends Cubit<ProductsState> {
     emit(state.copyWith(uiState: ProductUIState.loading));
 
     List<String> imagesUrls = [
-      "lib/src/core/assets/banner1.jpg",
-      "lib/src/core/assets/banner2.jpg",
-      "lib/src/core/assets/banner3.jpg",
-      "lib/src/core/assets/banner4.jpg",
+      "lib/src/core/assets/images/banner1.jpg",
+      "lib/src/core/assets/images/banner2.jpg",
+      "lib/src/core/assets/images/banner3.jpg",
+      "lib/src/core/assets/images/banner4.jpg",
     ];
 
     try {

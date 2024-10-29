@@ -45,7 +45,7 @@ class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
           ),
-          IconButton(
+        /*  IconButton(
             icon: const Icon(
               Icons.shopping_cart,
               size: 24,
@@ -59,8 +59,8 @@ class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
               size: 24,
             ),
             color: ApplicationColors.black36,
-            onPressed: onPressedShare,
-          ),
+            onPressed: onPressedShare, 
+          ), */
         ],
       ),
     );

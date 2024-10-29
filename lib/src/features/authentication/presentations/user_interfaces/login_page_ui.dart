@@ -67,7 +67,7 @@ class _LoginPageUiState extends State<LoginPageUi> {
                 Flexible(
                   flex: 13,
                   child: Image.asset(
-                    "lib/src/core/assets/marketing.jpg",
+                    "lib/src/core/assets/images/marketing.jpg",
                     height: height * 0.5,
                     fit: BoxFit.fill,
                   ),

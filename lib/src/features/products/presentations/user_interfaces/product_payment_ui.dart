@@ -52,10 +52,99 @@ class ProductPaymentUI extends HookWidget {
         direction: Axis.vertical,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: Form(
+              key: formKey,
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ProductTextFormField(
+                      hintText: l10n.cardNumber,
+                      labelText: l10n.cardNumber,
+                      controller: cardNumberController,
+                      maxLength: 16,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.cardNumberInsert;
+                        }
+                        if (value.length != 16) {
+                          return l10n.cardNumberAlertLenght;
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => cardNumberController.text = value,
+                    ),
+                    const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
+                    ProductTextFormField(
+                      hintText: l10n.cardHolderName,
+                      labelText: l10n.cardHolderName,
+                      controller: cardHolderNameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.cardHolderNameInsert;
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => cardHolderNameController.text = value,
+                    ),
+                    const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: ProductTextFormField(
+                            hintText: l10n.expirationDate,
+                            labelText: l10n.expirationDate,
+                            controller: expirationDateController,
+                            maxLength: 5,
+                            errorMaxLines: 5,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return l10n.expirationDateInsert;
+                              }
+                              RegExp regExp = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
+                              if (!regExp.hasMatch(value)) {
+                                return l10n.expirationDateFormat;
+                              }
+                              return null;
+                            },
+                            onSaved: (value) => expirationDateController.text = value,
+                          ),
+                        ),
+                        const SizedBox(width: ApplicationStylesConstants.spacing8Sp),
+                        Expanded(
+                          child: ProductTextFormField(
+                            hintText: l10n.securityCode,
+                            labelText: l10n.securityCode,
+                            controller: securityCodeController,
+                            maxLength: 3,
+                            errorMaxLines: 5,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return l10n.securityCodeInsert;
+                              }
+                              if (value.length != 3) {
+                                return l10n.securityCodeAlertLenght;
+                              }
+                              return null;
+                            },
+                            onSaved: (value) => securityCodeController.text = value,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           Card(
             child: Column(
-            //  crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                const SizedBox(height: ApplicationStylesConstants.spacing20Sp),
                 Text(
                   l10n.totalPurchasePrice,
                   style: textTheme.titleLarge?.copyWith(
@@ -73,92 +162,6 @@ class ProductPaymentUI extends HookWidget {
                   ),
                 ),
               ],
-            ),
-          ),
-          Form(
-            key: formKey,
-            child: Card(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ProductTextFormField(
-                    hintText: l10n.cardNumber,
-                    labelText: l10n.cardNumber,
-                    controller: cardNumberController,
-                    maxLength: 16,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return l10n.cardNumberInsert;
-                      }
-                      if (value.length != 16) {
-                        return l10n.cardNumberAlertLenght;
-                      }
-                      return null;
-                    },
-                    onSaved: (value) => cardNumberController.text = value,
-                  ),
-                  const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
-                  ProductTextFormField(
-                    hintText: l10n.cardHolderName,
-                    labelText: l10n.cardHolderName,
-                    controller: cardHolderNameController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return l10n.cardHolderNameInsert;
-                      }
-                      return null;
-                    },
-                    onSaved: (value) => cardHolderNameController.text = value,
-                  ),
-                  const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: ProductTextFormField(
-                          hintText: l10n.expirationDate,
-                          labelText: l10n.expirationDate,
-                          controller: expirationDateController,
-                          maxLength: 5,
-                          errorMaxLines: 5,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return l10n.expirationDateInsert;
-                            }
-                            RegExp regExp = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
-                            if (!regExp.hasMatch(value)) {
-                              return l10n.expirationDateFormat;
-                            }
-                            return null;
-                          },
-                          onSaved: (value) => expirationDateController.text = value,
-                        ),
-                      ),
-                      const SizedBox(width: ApplicationStylesConstants.spacing8Sp),
-                      Expanded(
-                        child: ProductTextFormField(
-                          hintText: l10n.securityCode,
-                          labelText: l10n.securityCode,
-                          controller: securityCodeController,
-                          maxLength: 3,
-                          errorMaxLines: 5,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return l10n.securityCodeInsert;
-                            }
-                            if (value.length != 3) {
-                              return l10n.securityCodeAlertLenght;
-                            }
-                            return null;
-                          },
-                          onSaved: (value) => securityCodeController.text = value,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
             ),
           ),
           ProductButton(
