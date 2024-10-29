@@ -39,7 +39,7 @@ class ProductCardHome extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(ApplicationStylesConstants.spacing16Sp),
+                padding: const EdgeInsets.all(ApplicationStylesConstants.spacing4Sp),
                 child: Text(
                   productModel.title,
                   textAlign: TextAlign.center,

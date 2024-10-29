@@ -21,6 +21,7 @@ class ProductsHomeUI extends HookWidget {
     final cubit = context.read<ProductsCubit>();
     final l10n = AppLocalizations.of(context)!;
     final CarouselSliderController controller = CarouselSliderController();
+    final ValueNotifier<int> currentUrl = ValueNotifier<int>(0);
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, currentState) {
       if (currentState.addProductInCartList == true) {
@@ -37,9 +38,10 @@ class ProductsHomeUI extends HookWidget {
               ProductCarousel(
                 imagesUrls: state.imagesUrls,
                 controller: controller,
+                currentUrl: currentUrl,
               ),
               SizedBox(
-                height: height * 0.6,
+                height: height * 0.55,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: state.products.length,

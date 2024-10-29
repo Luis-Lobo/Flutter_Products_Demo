@@ -53,7 +53,7 @@ class ProductsPagesUI extends HookWidget {
           bottomNavigationBar: Builder(builder: (context) {
             return SafeArea(
               child: Container(
-                height: height * 0.1,
+                height: height * 0.08,
                 decoration: const BoxDecoration(
                   color: ApplicationColors.red,
                 ),

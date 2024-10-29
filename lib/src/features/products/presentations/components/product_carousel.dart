@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 
 class ProductCarousel extends StatelessWidget {
   final CarouselSliderController controller;
   final List<String> imagesUrls;
+  final ValueNotifier<int> currentUrl;
 
-  const ProductCarousel({
-    required this.controller, 
-    required this.imagesUrls, 
-    super.key});
+  const ProductCarousel({required this.controller, required this.imagesUrls, required this.currentUrl, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,26 +30,36 @@ class ProductCarousel extends StatelessWidget {
           options: CarouselOptions(
             height: 200.0,
             autoPlay: true,
-            autoPlayInterval: Duration(seconds: 3),
+            autoPlayInterval: const Duration(seconds: 3),
             enlargeCenterPage: true,
             onPageChanged: (index, reason) {
-              // Handle indicator updates if needed (optional)
+              currentUrl.value = index;
             },
           ),
         ),
-       /* Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-          //    onPressed: () => controller.previousPage(),
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_forward),
-              onPressed: () => controller.nextPage(),
-            ),
-          ],
-        ), */
+        ValueListenableBuilder<int>(
+          valueListenable: currentUrl,
+          builder: (context, value, _) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: imagesUrls.asMap().entries.map((entry) {
+                return GestureDetector(
+                  onTap: () => controller.animateToPage(entry.key),
+                  child: Container(
+                    width: 8.0,
+                    height: 8.0,
+                    margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (Theme.of(context).brightness == Brightness.dark ? ApplicationColors.grey800 : ApplicationColors.black36)
+                          .withOpacity(currentUrl.value == entry.key ? 0.9 : 0.4),
+                    ),
+                  ),
+                );
+              }).toList(),
+            );
+          },
+        ),
       ],
     );
   }
