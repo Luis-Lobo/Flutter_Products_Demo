@@ -42,7 +42,7 @@ Test Units,
 
 <table>
   <tr>
-    <td><img src="lib/src/core/assets/prints/login.png" alt="Login" width="150" height="300"/></td>
+    <td><img src="lib/src/core/assets/prints/login.png" alt="Login" width="300" height="300"/></td>
     <td><img src="lib/src/core/assets/prints/home.png" alt="Home"  width="150" height="300"/></td>
     <td><img src="lib/src/core/assets/prints/search.png" alt="Search"  width="150" height="300"/></td>
   </tr>

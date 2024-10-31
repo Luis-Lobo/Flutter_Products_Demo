@@ -1,7 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
+import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/components/product_button.dart';
+import 'package:flutter_products_demo/src/core/components/product_circular_progress_indicator.dart';
 import 'package:flutter_products_demo/src/core/components/product_text_form_field.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
@@ -17,37 +24,72 @@ class CreateAccountPageUI extends StatefulWidget {
 
 class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
   final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+  final _storage = FirebaseStorage.instance;
+
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _passwordConfirmationController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  File? _image;
   bool _isLoading = false;
   String _errorMessage = "";
 
-  Future<void> createUser() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
+  Future<void> registerUser() async {
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
 
+    setState(() {
+      _isLoading = true;
+    });
+
+    if (_formKey.currentState!.validate()) {
       try {
-        await _auth.createUserWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text,
+        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
         );
-        setState(() {
-          _errorMessage = '';
-        });
+
+        String uid = userCredential.user!.uid;
+
+        if (_image != null) {
+          String imageName = DateTime.now().millisecondsSinceEpoch.toString();
+          Reference file = _storage.ref().child("$name + _Photo").child(uid).child(imageName);
+
+          UploadTask uploadTask = file.putFile(_image!);
+          TaskSnapshot taskSnapshot = await uploadTask;
+
+          String photoUrl = await taskSnapshot.ref.getDownloadURL();
+
+          await _firestore.collection('users').doc(uid).set({'name': name, 'email': email, 'photoUrl': photoUrl});
+        } else {
+          await _firestore.collection('users').doc(uid).set({
+            'name': name,
+            'email': email,
+          });
+        }
+
+        ScaffoldMessenger.of(context).showSnackBar(ProductSnackBar.showAdditionSnackBar(context: context, message: "User successfully registered"));
         context.go('/productsPage');
-      } catch (e) {
-        setState(() {
-          _errorMessage = 'Failed to register: ${e.toString()}';
-        });
-      } finally {
-        setState(() {
-          _isLoading = false;
-        });
+      } catch (error) {
+        // ignore: avoid_print
+        print(error);
+        _errorMessage = "Error when trying to register user $error";
       }
+    }
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  Future<void> _pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
     }
   }
 
@@ -64,7 +106,7 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
+              const SizedBox(height: ApplicationStylesConstants.spacing4Sp),
               Flexible(
                 flex: 2,
                 child: Padding(
@@ -80,7 +122,37 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
                   ),
                 ),
               ),
-              const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
+              GestureDetector(
+                onTap: _pickImage,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: _image != null ? FileImage(_image!) : null,
+                  child: _image == null ? const Icon(Icons.camera_alt, size: 30, color: Colors.white) : null,
+                ),
+              ),
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: ProductTextFormField(
+                    hintText: l10n.name,
+                    labelText: l10n.name,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.nameInsert;
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      _nameController.text = value;
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
               Flexible(
                 flex: 2,
                 child: Padding(
@@ -93,6 +165,9 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
                       if (value == null || value.isEmpty) {
                         return l10n.emailAddressInsert;
                       }
+                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                        return l10n.emailAddressInvalid;
+                      }
                       return null;
                     },
                     onChanged: (value) {
@@ -101,7 +176,7 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
                   ),
                 ),
               ),
-              const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
               Flexible(
                 flex: 2,
                 child: Padding(
@@ -125,7 +200,7 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
                   ),
                 ),
               ),
-              const SizedBox(height: ApplicationStylesConstants.spacing32Sp),
+              const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
               Flexible(
                 flex: 2,
                 child: Padding(
@@ -141,7 +216,7 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
                       return null;
                     },
                     onChanged: (value) {
-                      _passwordConfirmationController.text = value;
+                      _confirmPasswordController.text = value;
                     },
                   ),
                 ),
@@ -152,11 +227,11 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: _isLoading
-                      ? const CircularProgressIndicator()
+                      ? const ProductCircularProgressIndicator()
                       : ProductButton(
                           textButton: l10n.createAccount,
                           borderRadius: BorderRadius.circular(16.0),
-                          onPressed: createUser,
+                          onPressed: registerUser,
                         ),
                 ),
               ),

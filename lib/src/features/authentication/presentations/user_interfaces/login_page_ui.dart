@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/components/product_button.dart';
+import 'package:flutter_products_demo/src/core/components/product_circular_progress_indicator.dart';
 import 'package:flutter_products_demo/src/core/components/product_text_form_field.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
@@ -156,7 +157,7 @@ class _LoginPageUiState extends State<LoginPageUi> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     child: _isLoading? 
-                    const CircularProgressIndicator()
+                    const ProductCircularProgressIndicator()
                     :ProductButton(
                       textButton: l10n.signIn,
                       borderRadius: BorderRadius.circular(16.0),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/create_account_page_ui.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/login_page_ui.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
@@ -74,6 +75,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<ProductsCubit>(
           create: (context) => CubitFactories.productsCubit,
         ),
+        BlocProvider<AuthenticationCubit>(
+          create: (context) => CubitFactories.authenticationCubit,
+        ),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
@@ -85,8 +89,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routerConfig: _router,
-     //   routeInformationParser: _router.routeInformationParser,
-     //   routerDelegate: _router.routerDelegate,
       ),
     );
   }

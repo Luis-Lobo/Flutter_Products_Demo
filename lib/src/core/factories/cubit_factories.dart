@@ -7,6 +7,9 @@ import 'package:flutter_products_demo/src/core/services/application_http_client.
 import 'package:flutter_products_demo/src/core/services/dio_http_client_impl.dart';
 import 'package:flutter_products_demo/src/core/services/interceptors/application_interceptor_impl.dart';
 import 'package:flutter_products_demo/src/core/storage/application_storage_impl.dart';
+import 'package:flutter_products_demo/src/features/authentication/data/authentication_repository_impl.dart';
+import 'package:flutter_products_demo/src/features/authentication/domain/use_cases/authentication_use_case_impl.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/data/products_repositoyy_impl.dart';
 import 'package:flutter_products_demo/src/features/products/domain/use_cases/use_cases_products_impl.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
@@ -16,17 +19,23 @@ class CubitFactories {
   static get _baseUrl => FlavorConfig.instance.variables["baseUrl"];
 
   static ProductsCubit get productsCubit => ProductsCubit(
-        useCase:ProductsUseCaseImpl(
+        useCase: ProductsUseCaseImpl(
           repository: ProductsRepositoryImpl(
             httpClient: _getClient(),
           ),
         ),
       );
 
+  static AuthenticationCubit get authenticationCubit => AuthenticationCubit(
+        useCase: const AuthenticationUseCaseImpl(
+          repository: AuthenticationRepositoryImpl(),
+        ),
+      );
+
   static ApplicationHttpClient _getClient({String? baseUrl}) {
     final dio = Dio(
       BaseOptions(
-     //   baseUrl: baseUrl ?? _baseUrl,
+        //   baseUrl: baseUrl ?? _baseUrl,
         baseUrl: "https://fakestoreapi.com",
         connectTimeout: const Duration(milliseconds: 30000),
         receiveTimeout: const Duration(milliseconds: 30000),
@@ -36,8 +45,7 @@ class CubitFactories {
     dio.httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
         final client = HttpClient();
-        client.badCertificateCallback =
-            (X509Certificate cert, String host, int port) => true;
+        client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
         return client;
       },
     );
