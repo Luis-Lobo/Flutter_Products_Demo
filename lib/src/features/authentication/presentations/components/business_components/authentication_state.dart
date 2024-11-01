@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
-import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
-
 class AuthenticationState extends Equatable {
   final AuthenticationUIState uiState;
   final UserModel? userModel;

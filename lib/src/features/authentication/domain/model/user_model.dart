@@ -12,7 +12,7 @@ class UserModel extends Equatable {
   final String email;
 
   @JsonKey(name: 'photoUrl')
-  final String photoUrl;
+  final String? photoUrl;
 
   const UserModel({
     required this.name,
@@ -25,5 +25,5 @@ class UserModel extends Equatable {
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   @override
-  List<Object> get props => [name, email, photoUrl];
+  List<Object?> get props => [name, email, photoUrl];
 }

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -56,7 +55,7 @@ class _CreateAccountPageUIState extends State<CreateAccountPageUI> {
 
         if (_image != null) {
           String imageName = DateTime.now().millisecondsSinceEpoch.toString();
-          Reference file = _storage.ref().child("$name + _Photo").child(uid).child(imageName);
+          Reference file = _storage.ref().child(uid).child(imageName);
 
           UploadTask uploadTask = file.putFile(_image!);
           TaskSnapshot taskSnapshot = await uploadTask;

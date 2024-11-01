@@ -1,6 +1,4 @@
-import 'dart:developer' as developer;
-
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_products_demo/src/features/authentication/data/authentication_repository.dart';
 import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
 import 'package:flutter_products_demo/src/features/authentication/domain/use_cases/authentication_use_case.dart';
@@ -15,6 +13,9 @@ class AuthenticationUseCaseImpl implements AuthenticationUseCase {
 
   @override
   Future<UserModel?> getUser() => _repository.getUser();
+
+  @override
+  Future<void> logout(BuildContext context) => _repository.logout(context);
 
 
 }

@@ -3,6 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_state.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_state.dart';
 import 'package:flutter_products_demo/src/core/components/product_bottom_nav.dart';
@@ -21,14 +23,16 @@ class ProductsPagesUI extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<ProductsCubit>();
+    final authCubit = context.read<AuthenticationCubit>();
+    final productCubit = context.read<ProductsCubit>();
     final height = MediaQuery.of(context).size.height;
     final l10n = AppLocalizations.of(context)!;
 
     useEffect(() {
-      cubit.initialize(
+      productCubit.initialize(
         page: page,
       );
+      authCubit.getUser();
       return null;
     }, const []);
 
@@ -49,7 +53,12 @@ class ProductsPagesUI extends HookWidget {
               ],
             ),
           ),
-          drawer: const ProductDrawer(),
+          drawer: BlocBuilder<AuthenticationCubit, AuthenticationState>(builder: (context, state) {
+            return ProductDrawer(
+              userModel: state.userModel!,
+              onLogoutTap: () => authCubit.logout(context),
+            );
+          }),
           bottomNavigationBar: Builder(builder: (context) {
             return SafeArea(
               child: Container(
@@ -63,17 +72,17 @@ class ProductsPagesUI extends HookWidget {
                     ProductBottomNav(
                       icon: Icons.home,
                       title: l10n.shop,
-                      onTap: () => cubit.initialize(),
+                      onTap: () => productCubit.initialize(),
                     ),
                     ProductBottomNav(
                       icon: Icons.search,
                       title: l10n.search,
-                      onTap: () => cubit.goToSearchPage(),
+                      onTap: () => productCubit.goToSearchPage(),
                     ),
                     ProductBottomNav(
                       icon: Icons.shopping_cart,
                       title: l10n.purchase,
-                      onTap: () => cubit.goToCartPage(),
+                      onTap: () => productCubit.goToCartPage(),
                     ),
                     ProductBottomNav(
                       icon: Icons.person,
