@@ -14,6 +14,7 @@
     "createAccount" : "CREATE ACCOUNT",
     "createAccountOnFakeShopping" : "Create an account on Fake Shopping App and enjoy the best offers",
     "description" : "Description: ",
+    "email" : "Email:",
     "emailAddress": "Email Address:",
     "emailAddressInsert": "Please, insert your email address.",
     "emailAddressInvalid": "Invalid email address.",
@@ -45,5 +46,6 @@
     "signIn" : "SIGN IN",
     "shop": "SHOP",
     "shoppingCartEmpty": "YOUR SHOPPING CART IS EMPTY",
-    "totalPurchasePrice" : "Total Purchase Price"
+    "totalPurchasePrice" : "Total Purchase Price",
+    "welcome" : "Welcome to Our Store!"
 }

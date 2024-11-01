@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
-import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
 
 class ProductDrawer extends StatelessWidget {
@@ -18,11 +17,11 @@ class ProductDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
-
     return Drawer(
       backgroundColor: ApplicationColors.grey700,
       child: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
                 child: ListView(
@@ -30,7 +29,6 @@ class ProductDrawer extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               children: [
-                const SizedBox(height: ApplicationStylesConstants.spacing16Sp),
                 ListTile(
                   title: Container(
                     decoration: BoxDecoration(
@@ -41,9 +39,7 @@ class ProductDrawer extends StatelessWidget {
                       ),
                     ),
                     child: CircleAvatar(
-                      backgroundImage: userModel.photoUrl != null && userModel.photoUrl!.isNotEmpty ? 
-                      NetworkImage(userModel.photoUrl!) : 
-                      null,
+                      backgroundImage: userModel.photoUrl != null && userModel.photoUrl!.isNotEmpty ? NetworkImage(userModel.photoUrl!) : null,
                       backgroundColor: ApplicationColors.darkBlue,
                       radius: 48,
                       child: const Icon(Icons.person),
@@ -51,25 +47,15 @@ class ProductDrawer extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  title: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: ApplicationStylesConstants.spacing4Sp),
-                      child: Text(
-                        userModel.name,
-                        style: textTheme.titleLarge?.copyWith(color: ApplicationColors.white),
-                      ),
-                    ),
+                  title: Text(
+                    "${l10n.name} ${userModel.name}",
+                    style: textTheme.titleMedium?.copyWith(color: ApplicationColors.white),
                   ),
                 ),
                 ListTile(
-                  title: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: ApplicationStylesConstants.spacing4Sp),
-                      child: Text(
-                        userModel.email,
-                        style: textTheme.titleLarge?.copyWith(color: ApplicationColors.white),
-                      ),
-                    ),
+                  title: Text(
+                    "${l10n.email} ${userModel.email}",
+                    style: textTheme.titleMedium?.copyWith(color: ApplicationColors.white),
                   ),
                 ),
                 const Divider(

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:flutter_products_demo/src/core/services/application_http_client.dart';
 import 'package:flutter_products_demo/src/core/services/dio_http_client_impl.dart';
 import 'package:flutter_products_demo/src/core/services/interceptors/application_interceptor_impl.dart';
@@ -16,7 +15,6 @@ import 'package:flutter_products_demo/src/features/products/presentations/bussin
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CubitFactories {
-  static get _baseUrl => FlavorConfig.instance.variables["baseUrl"];
 
   static ProductsCubit get productsCubit => ProductsCubit(
         useCase: ProductsUseCaseImpl(
@@ -27,7 +25,7 @@ class CubitFactories {
       );
 
   static AuthenticationCubit get authenticationCubit => AuthenticationCubit(
-        useCase: const AuthenticationUseCaseImpl(
+        useCase:  AuthenticationUseCaseImpl(
           repository: AuthenticationRepositoryImpl(),
         ),
       );
@@ -35,7 +33,6 @@ class CubitFactories {
   static ApplicationHttpClient _getClient({String? baseUrl}) {
     final dio = Dio(
       BaseOptions(
-        //   baseUrl: baseUrl ?? _baseUrl,
         baseUrl: "https://fakestoreapi.com",
         connectTimeout: const Duration(milliseconds: 30000),
         receiveTimeout: const Duration(milliseconds: 30000),

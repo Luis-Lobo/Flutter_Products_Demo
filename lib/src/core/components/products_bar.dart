@@ -4,16 +4,14 @@ import 'package:flutter_products_demo/src/core/theme/application_styles_constant
 
 class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
-  final String? subtitle;
-  final VoidCallback? onPressedReturnToHome;
+  final VoidCallback? onPop;
   final VoidCallback? onPressedPurchase;
   final VoidCallback? onPressedShare;
 
   const ProductsBar({
     super.key,
     this.title,
-    this.subtitle,
-    this.onPressedReturnToHome,
+    this.onPop,
     this.onPressedPurchase,
     this.onPressedShare,
   });
@@ -24,22 +22,22 @@ class ProductsBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
         icon: const Icon(Icons.arrow_back_ios_new),
-        onPressed: onPressedReturnToHome,
+        onPressed: onPop,
       ),
       title: Row(
         children: [
-          const SizedBox(width: ApplicationStylesConstants.spacing10Sp),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  subtitle ?? '',
-                  textAlign: TextAlign.left,
+                  title ?? '',
+                  textAlign: TextAlign.justify,
+                  maxLines: 2,
                   style: textTheme.titleLarge?.copyWith(
-                    color: Colors.green,
+                    color: ApplicationColors.black36,
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
+                    fontSize: 22,
                   ),
                 ),
               ],

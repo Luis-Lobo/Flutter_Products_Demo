@@ -11,7 +11,7 @@ import 'package:flutter_products_demo/src/features/products/presentations/compon
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_comments.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_products_demo/src/features/products/presentations/components/products_bar.dart';
+import 'package:flutter_products_demo/src/core/components/products_bar.dart';
 
 class ProductDetailsUI extends StatefulWidget {
   final ProductModel productModel;
@@ -38,7 +38,7 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
       return Scaffold(
         appBar: ProductsBar(
           title: widget.productModel.title,
-          onPressedReturnToHome: () => context.go('/'),
+          onPop: () => context.pop(),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
