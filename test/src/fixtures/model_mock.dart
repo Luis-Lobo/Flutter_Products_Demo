@@ -1,7 +1,14 @@
+import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/rating_model.dart';
 
 class ModelMock {
+  static UserModel get userModel => const UserModel(
+        name: "name",
+        email: "email",
+        photoUrl: "photoUrl",
+      );
+
   static RatingModel get ratingModel => const RatingModel(rate: 3.9, count: 120);
 
   static ProductModel get productModel => ProductModel(
