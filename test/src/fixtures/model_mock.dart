@@ -22,4 +22,11 @@ class ModelMock {
       );
 
   static List<ProductModel> get productsList => [productModel, productModel];
+
+  static List<String> get imagesUrls => [
+        "lib/src/core/assets/images/banner1.jpg",
+        "lib/src/core/assets/images/banner2.jpg",
+        "lib/src/core/assets/images/banner3.jpg",
+        "lib/src/core/assets/images/banner4.jpg",
+      ];
 }

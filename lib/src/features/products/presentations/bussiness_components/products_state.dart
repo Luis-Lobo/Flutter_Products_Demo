@@ -76,7 +76,9 @@ enum ProductUIState {
   initial,
   loading,
   success,
-  error;
+  error,
+  addedToCart,
+  removedToCart;
 
   bool get isSuccess => this == ProductUIState.success;
 

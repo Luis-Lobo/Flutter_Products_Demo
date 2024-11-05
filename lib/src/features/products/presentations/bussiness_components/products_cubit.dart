@@ -25,9 +25,10 @@ class ProductsCubit extends Cubit<ProductsState> {
       final products = await _useCase.getProducts();
 
       emit(state.copyWith(
+        uiState: ProductUIState.success,
+        uiPages: ProductUIPages.homePage,
         imagesUrls: imagesUrls,
         products: products,
-        uiPages: ProductUIPages.homePage,
       ));
     } catch (exception) {
       emit(state.copyWith(
@@ -62,6 +63,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     updateList.add(product);
     calculatePurchasePrice(updateList: updateList);
     emit(state.copyWith(
+      uiState: ProductUIState.addedToCart,
       cartList: updateList,
       addProductInCartList: true,
     ));
@@ -72,6 +74,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     updateList.remove(product);
     calculatePurchasePrice(updateList: updateList);
     emit(state.copyWith(
+      uiState: ProductUIState.removedToCart,
       cartList: updateList,
       removeProductInCartList: true,
     ));
