@@ -18,6 +18,7 @@ import 'authentication_repository_impl_test.mocks.dart';
   CollectionReference, 
   DocumentReference,
   ])
+  
 void main() {
   setupFirebaseCoreMocks();
   setUpAll(() async {

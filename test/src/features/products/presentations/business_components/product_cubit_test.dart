@@ -167,7 +167,11 @@ void main() {
       },
       expect: () => [
         ProductsState(
-            uiState: ProductUIState.initial, uiPages: ProductUIPages.homePage, cartList: [productModel], addProductInCartList: false, totalPurchasePrice: 0.0),
+            uiState: ProductUIState.initial, 
+            uiPages: ProductUIPages.homePage, 
+            cartList: [productModel], 
+            addProductInCartList: false, 
+            totalPurchasePrice: 0.0),
         const ProductsState(
           uiState: ProductUIState.removedToCart,
           uiPages: ProductUIPages.homePage,
