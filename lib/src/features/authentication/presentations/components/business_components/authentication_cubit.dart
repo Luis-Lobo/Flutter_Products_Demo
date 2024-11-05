@@ -49,6 +49,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
 
       emit(state.copyWith(
+        uiState: AuthenticationUIState.success,
         userModel: userModel,
       ));
       
