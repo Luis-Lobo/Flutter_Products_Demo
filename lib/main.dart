@@ -7,6 +7,7 @@ import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/create_account_page_ui.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/login_page_ui.dart';
+import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/recover_password_page_ui.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/user_interfaces/product_details_ui.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
@@ -59,6 +60,12 @@ final GoRouter _router = GoRouter(
           path: 'createAccountPage',
           builder: (BuildContext context, GoRouterState state) {
             return const CreateAccountPageUI();
+          },
+        ),
+        GoRoute(
+          path: 'recoverPasswordPage',
+          builder: (BuildContext context, GoRouterState state) {
+            return const RecoverPasswordPageUi();
           },
         ),
       ],

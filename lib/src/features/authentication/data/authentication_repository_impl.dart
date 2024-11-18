@@ -61,4 +61,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     await FirebaseAuth.instance.signOut();
     context.go('/');
   }
+
+  @override
+  Future<void> recoverPassword({required String email}) async {
+    await auth.sendPasswordResetEmail(email: email);
+  }
 }

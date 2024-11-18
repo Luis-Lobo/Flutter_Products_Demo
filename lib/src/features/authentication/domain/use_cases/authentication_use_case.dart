@@ -16,4 +16,6 @@ abstract class AuthenticationUseCase {
   Future<void> login({required String email, required String password});
 
   Future<void> logout(BuildContext context);
+
+  Future<void> recoverPassword({required String email});
 }

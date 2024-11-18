@@ -8,6 +8,7 @@ class AuthenticationState extends Equatable {
   final String? registerErrorMessage;
   final String? loginErrorMessage;
   final UserModel? userModel;
+  final bool recoverPasswordSucess;
 
   factory AuthenticationState.initial() => const AuthenticationState(
         uiState: AuthenticationUIState.initial,
@@ -20,6 +21,7 @@ class AuthenticationState extends Equatable {
     this.registerErrorMessage,
     this.loginErrorMessage,
     this.userModel,
+    this.recoverPasswordSucess = false,
   });
 
   AuthenticationState copyWith({
@@ -29,6 +31,7 @@ class AuthenticationState extends Equatable {
     String? registerErrorMessage,
     String? loginErrorMessage,
     UserModel? userModel,
+    bool? recoverPasswordSucess,
   }) =>
       AuthenticationState(
         uiState: uiState ?? this.uiState,
@@ -37,6 +40,7 @@ class AuthenticationState extends Equatable {
         registerErrorMessage: registerErrorMessage ?? this.registerErrorMessage,
         loginErrorMessage: loginErrorMessage ?? this.loginErrorMessage,
         userModel: userModel ?? this.userModel,
+        recoverPasswordSucess: recoverPasswordSucess ?? this.recoverPasswordSucess,
       );
 
   @override
@@ -46,6 +50,7 @@ class AuthenticationState extends Equatable {
         loginSucess,
         loginErrorMessage,
         userModel,
+        recoverPasswordSucess,
       ];
 }
 

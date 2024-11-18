@@ -77,5 +77,14 @@ void main() {
 
       verify(repository.logout(context)).called(1);
     });
+
+    test('Test recoverPassword method. It calls repository with correct context', () async {
+
+      when(repository.recoverPassword(email: 'email')).thenAnswer((_) async => Future.value());
+
+      await useCase.recoverPassword(email: 'email');
+
+      verify(repository.recoverPassword(email: 'email')).called(1);
+    });
   });
 }

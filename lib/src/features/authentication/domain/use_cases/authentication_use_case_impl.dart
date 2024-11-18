@@ -32,4 +32,7 @@ class AuthenticationUseCaseImpl implements AuthenticationUseCase {
 
   @override
   Future<void> logout(BuildContext context) => _repository.logout(context);
+
+  @override
+  Future<void> recoverPassword({required String email}) => _repository.recoverPassword(email: email);
 }

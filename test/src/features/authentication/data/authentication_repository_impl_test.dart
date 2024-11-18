@@ -92,4 +92,14 @@ void main() {
       verify(mockFirebaseAuth.signOut()).called(1);
     });
   });
+
+  group("Recover Password method", () {
+    test('Should reset password successfully', () async {
+      when(mockFirebaseAuth.sendPasswordResetEmail(email: "email")).thenAnswer((_) async => Future.value);
+
+      await mockFirebaseAuth.sendPasswordResetEmail(email: "email");
+
+      verify(mockFirebaseAuth.sendPasswordResetEmail(email: "email")).called(1);
+    });
+  });
 }

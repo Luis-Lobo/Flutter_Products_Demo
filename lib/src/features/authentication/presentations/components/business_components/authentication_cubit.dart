@@ -89,4 +89,19 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       ));
     }
   }
+  
+  void recoverPassword({required String email}) async {
+    emit(state.copyWith(uiState: AuthenticationUIState.loading));
+    try {
+      await _useCase.recoverPassword(email: email);
+      emit(state.copyWith(
+        recoverPasswordSucess: true,
+      ));
+    } catch (exception) {
+      emit(state.copyWith(
+        uiState: AuthenticationUIState.error,
+        recoverPasswordSucess: false,
+      ));
+    }
+  }
 }

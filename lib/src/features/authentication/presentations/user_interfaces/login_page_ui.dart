@@ -1,4 +1,3 @@
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +20,6 @@ class LoginPageUi extends StatefulWidget {
 
 class _LoginPageUiState extends State<LoginPageUi> {
   bool _obscureText = true;
-  //final _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -34,7 +32,8 @@ class _LoginPageUiState extends State<LoginPageUi> {
     final textTheme = Theme.of(context).textTheme;
     final height = MediaQuery.of(context).size.height;
     final cubit = context.read<AuthenticationCubit>();
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(listener: (context, currentState) {
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener: (context, currentState) {
       if (_formKey.currentState!.validate()) {
         _isLoading = true;
         if (currentState.loginSucess) {
@@ -134,12 +133,15 @@ class _LoginPageUiState extends State<LoginPageUi> {
                   const SizedBox(height: ApplicationStylesConstants.spacing8Sp),
                   Flexible(
                     flex: 1,
-                    child: Text(
-                      l10n.forgotPassword,
-                      textAlign: TextAlign.center,
-                      style: textTheme.titleMedium?.copyWith(
-                        color: ApplicationColors.darkBlue,
-                        fontWeight: FontWeight.w400,
+                    child: GestureDetector(
+                      onTap:  () => context.go('/recoverPasswordPage'),
+                      child: Text(
+                        l10n.forgotPassword,
+                        textAlign: TextAlign.center,
+                        style: textTheme.titleMedium?.copyWith(
+                          color: ApplicationColors.darkBlue,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
@@ -170,7 +172,10 @@ class _LoginPageUiState extends State<LoginPageUi> {
                     ),
                   ),
                   const SizedBox(height: ApplicationStylesConstants.spacing4Sp),
-                  if (_errorMessage.isNotEmpty) ErrorMessage(message: _errorMessage)
+                  if (_errorMessage.isNotEmpty) Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                      child: ErrorMessage(message: _errorMessage),
+                    )
                 ],
               ),
             ),

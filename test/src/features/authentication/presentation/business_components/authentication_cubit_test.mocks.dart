@@ -143,6 +143,18 @@ class AuthenticationUseCaseMock extends _i1.Mock
         returnValue: _i5.Future<void>.value(),
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> recoverPassword({required String? email}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recoverPassword,
+          [],
+          {#email: email},
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }
 
 /// A class which mocks [AuthenticationRepository].
@@ -208,6 +220,18 @@ class AutenticationRepositoryMock extends _i1.Mock
         Invocation.method(
           #logout,
           [context],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> recoverPassword({required String? email}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #recoverPassword,
+          [],
+          {#email: email},
         ),
         returnValue: _i5.Future<void>.value(),
         returnValueForMissingStub: _i5.Future<void>.value(),
