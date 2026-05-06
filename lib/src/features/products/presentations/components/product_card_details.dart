@@ -3,7 +3,7 @@ import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:flutter_products_demo/src/features/products/domain/models/product_model.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_rich_text_info.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_products_demo/src/core/l10n/app_localizations.dart';
 
 class ProductCardDetails extends StatelessWidget {
   final ProductModel productModel;

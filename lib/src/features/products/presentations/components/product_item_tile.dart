@@ -24,7 +24,7 @@ class ProductItemTile extends StatelessWidget {
       ),
       child: ListTile(
         leading: Image.network(productModel.image, width: 50, height: 50, fit: BoxFit.cover),
-        title: Text(productModel.title),
+        title: Text(productModel.name),
         trailing: IconButton(
           icon: const Icon(Icons.delete_forever_rounded),
           color:  Colors.red,

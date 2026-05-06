@@ -30,10 +30,11 @@ class CubitFactories {
         ),
       );
 
-  static ApplicationHttpClient _getClient({String? baseUrl}) {
+  static ApplicationHttpClient _getClient() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: "https://fakestoreapi.com",
+        //baseUrl: "https://fakestoreapi.com",
+        baseUrl: 'http://192.168.0.21:3430/apiDemo',
         connectTimeout: const Duration(milliseconds: 30000),
         receiveTimeout: const Duration(milliseconds: 30000),
         sendTimeout: const Duration(milliseconds: 30000),

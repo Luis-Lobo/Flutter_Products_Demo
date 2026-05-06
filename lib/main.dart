@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_products_demo/src/core/l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/factories/cubit_factories.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/user_interfaces/create_account_page_ui.dart';

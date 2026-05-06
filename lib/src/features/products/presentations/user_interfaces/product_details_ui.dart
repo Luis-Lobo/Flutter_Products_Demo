@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_products_demo/src/core/l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/components/product_button.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
@@ -37,7 +37,7 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
     }, builder: (context, state) {
       return Scaffold(
         appBar: ProductsBar(
-          title: widget.productModel.title,
+          title: widget.productModel.name,
           onPop: () => context.pop(),
         ),
         body: Padding(

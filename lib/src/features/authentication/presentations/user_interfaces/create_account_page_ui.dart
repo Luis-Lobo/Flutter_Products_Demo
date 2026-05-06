@@ -6,7 +6,7 @@ import 'package:flutter_products_demo/src/features/authentication/presentations/
 import 'package:flutter_products_demo/src/features/products/presentations/components/product_snack_bar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_products_demo/src/core/l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/components/product_button.dart';
 import 'package:flutter_products_demo/src/core/components/product_circular_progress_indicator.dart';
 import 'package:flutter_products_demo/src/core/components/product_text_form_field.dart';

@@ -144,7 +144,7 @@ void main() {
         verify: (cubit) {
           final cart = cubit.state.cartList;
           expect(cart.length, 1);
-          expect(cart.first.title, equals("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"));
+          expect(cart.first.name, equals("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"));
           expect(cubit.state.totalPurchasePrice, 109.95);
         });
 
@@ -249,12 +249,12 @@ void main() {
                   uiState: ProductUIState.initial,
                   uiPages: ProductUIPages.homePage,
                   products: productsList,
-                  filterList: productsList.where((model) => model.title.toLowerCase().contains("Fjallraven".toLowerCase())).toList()),
+                  filterList: productsList.where((model) => model.name.toLowerCase().contains("Fjallraven".toLowerCase())).toList()),
             ],
         verify: (cubit) {
           final filter = cubit.state.filterList;
           expect(filter, isNotEmpty);
-          expect(filter.every((model) => model.title.toLowerCase().contains("fjallraven")), isTrue);
+          expect(filter.every((model) => model.name.toLowerCase().contains("fjallraven")), isTrue);
         });
   });
 }

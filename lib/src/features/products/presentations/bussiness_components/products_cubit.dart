@@ -83,7 +83,7 @@ class ProductsCubit extends Cubit<ProductsState> {
   void calculatePurchasePrice({required List<ProductModel> updateList}) {
     double totalPurchasePrice = 0.0;
     for (int index = 0; index < updateList.length; index++) {
-      totalPurchasePrice += updateList[index].price;
+      totalPurchasePrice += double.parse(updateList[index].price);
     }
     emit(state.copyWith(
       totalPurchasePrice: totalPurchasePrice,
@@ -103,7 +103,7 @@ class ProductsCubit extends Cubit<ProductsState> {
         filterList: state.products,
       ));
     } else {
-      List<ProductModel> filterList = state.products.where((model) => model.title.toLowerCase().contains(query.toLowerCase())).toList();
+      List<ProductModel> filterList = state.products.where((model) => model.name.toLowerCase().contains(query.toLowerCase())).toList();
 
       emit(state.copyWith(
         filterList: filterList,

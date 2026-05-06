@@ -10,7 +10,7 @@ void main() {
   test('Test Product Model', () {
     expect(productModel, isA<ProductModel>());
     expect(productModel.id, 1);
-    expect(productModel.title,
+    expect(productModel.name,
         "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops");
     expect(productModel.price, 109.95);
     expect(productModel.description,
@@ -29,7 +29,7 @@ void main() {
     );
     expect(productModel, isA<ProductModel>());
     expect(productModel.id, 1);
-    expect(productModel.title,
+    expect(productModel.name,
         "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops");
     expect(productModel.price, 109.95);
     expect(productModel.description,

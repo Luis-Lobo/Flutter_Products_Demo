@@ -37,7 +37,17 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
+# Android build artifacts
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Novos artefatos de compilação nativa (O que está causando seu problema)
+/android/.gradle/
+/android/.cxx/
+/android/app/.cxx/
+*.cmake
+*.ninja
+*.json
+!/android/app/src/main/res/**/*.json # Mantém arquivos JSON de recursos se houver
+

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/components/product_button.dart';
 import 'package:flutter_products_demo/src/core/components/product_circular_progress_indicator.dart';
 import 'package:flutter_products_demo/src/core/components/product_text_form_field.dart';
+import 'package:flutter_products_demo/src/core/l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/core/theme/application_styles_constants.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
