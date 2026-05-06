@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter_products_demo/src/core/config/app_config_cubit.dart';
 import 'package:flutter_products_demo/src/core/services/application_http_client.dart';
 import 'package:flutter_products_demo/src/core/services/dio_http_client_impl.dart';
 import 'package:flutter_products_demo/src/core/services/interceptors/application_interceptor_impl.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_products_demo/src/features/products/presentations/bussin
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CubitFactories {
-
   static ProductsCubit get productsCubit => ProductsCubit(
         useCase: ProductsUseCaseImpl(
           repository: ProductsRepositoryImpl(
@@ -25,10 +25,12 @@ class CubitFactories {
       );
 
   static AuthenticationCubit get authenticationCubit => AuthenticationCubit(
-        useCase:  AuthenticationUseCaseImpl(
+        useCase: AuthenticationUseCaseImpl(
           repository: AuthenticationRepositoryImpl(),
         ),
       );
+
+  static AppConfigCubit get appConfigCubit => AppConfigCubit();
 
   static ApplicationHttpClient _getClient() {
     final dio = Dio(
@@ -43,7 +45,8 @@ class CubitFactories {
     dio.httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
         final client = HttpClient();
-        client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
         return client;
       },
     );

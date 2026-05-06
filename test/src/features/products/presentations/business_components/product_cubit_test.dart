@@ -10,7 +10,8 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/model_mock.dart';
 import '../../domain/use_cases/products_use_case_test.mocks.dart';
 
-@GenerateMocks([], customMocks: [MockSpec<ProductsUseCase>(as: #ProductsUseCaseMock)])
+@GenerateMocks([],
+    customMocks: [MockSpec<ProductsUseCase>(as: #ProductsUseCaseMock)])
 void main() {
   final repository = ProductsRepositoryMock();
   final useCase = ProductsUseCaseImpl(repository: repository);
@@ -39,7 +40,8 @@ void main() {
   });
 
   group('Tests on Product Cubit', () {
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when initialize is added',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when initialize is added',
         build: () {
           when(
             useCase.getProducts(),
@@ -49,8 +51,14 @@ void main() {
         },
         act: (cubit) => cubit.initialize(),
         expect: () => [
-              const ProductsState(uiState: ProductUIState.loading, uiPages: ProductUIPages.homePage),
-              ProductsState(uiState: ProductUIState.success, uiPages: ProductUIPages.homePage, imagesUrls: imagesUrls, products: productsList),
+              const ProductsState(
+                  uiState: ProductUIState.loading,
+                  uiPages: ProductUIPages.homePage),
+              ProductsState(
+                  uiState: ProductUIState.success,
+                  uiPages: ProductUIPages.homePage,
+                  imagesUrls: imagesUrls,
+                  products: productsList),
             ],
         verify: (cubit) {
           final products = cubit.state.products;
@@ -69,20 +77,25 @@ void main() {
       },
       act: (cubit) => cubit.initialize(),
       expect: () => [
-        const ProductsState(uiState: ProductUIState.loading, uiPages: ProductUIPages.homePage),
-        const ProductsState(uiState: ProductUIState.error, uiPages: ProductUIPages.homePage),
+        const ProductsState(
+            uiState: ProductUIState.loading, uiPages: ProductUIPages.homePage),
+        const ProductsState(
+            uiState: ProductUIState.error, uiPages: ProductUIPages.homePage),
       ],
       verify: (cubit) {
         expect(cubit.state.uiState, ProductUIState.error);
       },
     );
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when goToCartPage is added',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when goToCartPage is added',
         build: () {
           return ProductsCubit(useCase: useCase);
         },
         act: (cubit) => cubit.goToCartPage(),
         expect: () => [
-              const ProductsState(uiState: ProductUIState.loading, uiPages: ProductUIPages.cartPage),
+              const ProductsState(
+                  uiState: ProductUIState.loading,
+                  uiPages: ProductUIPages.cartPage),
             ],
         verify: (cubit) {
           final uiPages = cubit.state.uiPages;
@@ -90,13 +103,16 @@ void main() {
           expect(uiPages, ProductUIPages.cartPage);
         });
 
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when searchPage is added',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when searchPage is added',
         build: () {
           return ProductsCubit(useCase: useCase);
         },
         act: (cubit) => cubit.goToSearchPage(),
         expect: () => [
-              const ProductsState(uiState: ProductUIState.loading, uiPages: ProductUIPages.searchPage),
+              const ProductsState(
+                  uiState: ProductUIState.loading,
+                  uiPages: ProductUIPages.searchPage),
             ],
         verify: (cubit) {
           final uiPages = cubit.state.uiPages;
@@ -104,13 +120,16 @@ void main() {
           expect(uiPages, ProductUIPages.searchPage);
         });
 
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when goToPaymentPage is added',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when goToPaymentPage is added',
         build: () {
           return ProductsCubit(useCase: useCase);
         },
         act: (cubit) => cubit.goToPaymentPage(),
         expect: () => [
-              const ProductsState(uiState: ProductUIState.loading, uiPages: ProductUIPages.paymentPage),
+              const ProductsState(
+                  uiState: ProductUIState.loading,
+                  uiPages: ProductUIPages.paymentPage),
             ],
         verify: (cubit) {
           final uiPages = cubit.state.uiPages;
@@ -118,7 +137,8 @@ void main() {
           expect(uiPages, ProductUIPages.paymentPage);
         });
 
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when addToCart is called to add a product to the cart',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when addToCart is called to add a product to the cart',
         build: () {
           final cubit = ProductsCubit(useCase: useCase);
           cubit.emit(
@@ -130,10 +150,15 @@ void main() {
           );
           return cubit;
         },
-        act: (cubit) => cubit.addToCart(cartList: cubit.state.cartList, product: productModel),
+        act: (cubit) => cubit.addToCart(
+            cartList: cubit.state.cartList, product: productModel),
         expect: () => [
               const ProductsState(
-                  uiState: ProductUIState.initial, uiPages: ProductUIPages.homePage, cartList: [], addProductInCartList: false, totalPurchasePrice: 109.95),
+                  uiState: ProductUIState.initial,
+                  uiPages: ProductUIPages.homePage,
+                  cartList: [],
+                  addProductInCartList: false,
+                  totalPurchasePrice: 109.95),
               ProductsState(
                   uiState: ProductUIState.addedToCart,
                   uiPages: ProductUIPages.homePage,
@@ -144,7 +169,8 @@ void main() {
         verify: (cubit) {
           final cart = cubit.state.cartList;
           expect(cart.length, 1);
-          expect(cart.first.name, equals("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"));
+          expect(cart.first.name,
+              equals("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"));
           expect(cubit.state.totalPurchasePrice, 109.95);
         });
 
@@ -163,17 +189,18 @@ void main() {
         return cubit;
       },
       act: (cubit) {
-        cubit.removeToCart(product: productModel, cartList: cubit.state.cartList);
+        cubit.removeToCart(
+            product: productModel, cartList: cubit.state.cartList);
       },
       expect: () => [
         ProductsState(
-            uiState: ProductUIState.initial, 
-            uiPages: ProductUIPages.homePage, 
-            cartList: [productModel], 
-            addProductInCartList: false, 
+            uiState: ProductUIState.initial,
+            uiPages: ProductUIPages.homePage,
+            cartList: [productModel],
+            addProductInCartList: false,
             totalPurchasePrice: 0.0),
         const ProductsState(
-          uiState: ProductUIState.removedToCart,
+          uiState: ProductUIState.removedFromCart,
           uiPages: ProductUIPages.homePage,
           cartList: [],
           totalPurchasePrice: 0.0,
@@ -207,33 +234,42 @@ void main() {
       },
     );
 
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when resetStatesSnackBar is added',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when resetStatesSnackBar is added',
         build: () {
           return ProductsCubit(useCase: useCase);
         },
         act: (cubit) => cubit.resetStatesSnackBar(),
         expect: () => [
               const ProductsState(
-                  uiState: ProductUIState.initial, uiPages: ProductUIPages.homePage, addProductInCartList: false, removeProductInCartList: false),
+                  uiState: ProductUIState.initial,
+                  uiPages: ProductUIPages.homePage,
+                  addProductInCartList: false,
+                  removeProductInCartList: false),
             ],
         verify: (cubit) {
           final uiState = cubit.state.uiState;
           expect(uiState, isNotNull);
         });
 
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when filterProduct is added and it is null',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when filterProduct is added and it is null',
         build: () {
           return ProductsCubit(useCase: useCase);
         },
         act: (cubit) => cubit.filterProduct(),
         expect: () => [
-              const ProductsState(uiState: ProductUIState.initial, uiPages: ProductUIPages.homePage, filterList: const []),
+              const ProductsState(
+                  uiState: ProductUIState.initial,
+                  uiPages: ProductUIPages.homePage,
+                  filterList: const []),
             ],
         verify: (cubit) {
           final filter = cubit.state.filterList;
           expect(filter, isEmpty);
         });
-    blocTest<ProductsCubit, ProductsState>('Test Cubit when filterProduct is added and it is not null',
+    blocTest<ProductsCubit, ProductsState>(
+        'Test Cubit when filterProduct is added and it is not null',
         build: () {
           final cubit = ProductsCubit(useCase: useCase);
           cubit.emit(ProductsState(
@@ -249,12 +285,19 @@ void main() {
                   uiState: ProductUIState.initial,
                   uiPages: ProductUIPages.homePage,
                   products: productsList,
-                  filterList: productsList.where((model) => model.name.toLowerCase().contains("Fjallraven".toLowerCase())).toList()),
+                  filterList: productsList
+                      .where((model) => model.name
+                          .toLowerCase()
+                          .contains("Fjallraven".toLowerCase()))
+                      .toList()),
             ],
         verify: (cubit) {
           final filter = cubit.state.filterList;
           expect(filter, isNotEmpty);
-          expect(filter.every((model) => model.name.toLowerCase().contains("fjallraven")), isTrue);
+          expect(
+              filter.every(
+                  (model) => model.name.toLowerCase().contains("fjallraven")),
+              isTrue);
         });
   });
 }
