@@ -6,7 +6,7 @@ class LanguageButton extends StatelessWidget {
   final String label;
   final String langCode;
 
-  const LanguageButton({required this.label, required this.langCode});
+  const LanguageButton({super.key, required this.label, required this.langCode});
 
   @override
   Widget build(BuildContext context) {

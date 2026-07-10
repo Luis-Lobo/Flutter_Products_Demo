@@ -17,20 +17,19 @@ class ProductItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(ApplicationStylesConstants.spacing10Sp),
-        border: Border.all(
-          color: ApplicationColors.black
-        )
-      ),
+          borderRadius:
+              BorderRadius.circular(ApplicationStylesConstants.spacing10Sp),
+          border: Border.all(color: ApplicationColors.black)),
       child: ListTile(
-        leading: Image.network(productModel.image, width: 50, height: 50, fit: BoxFit.cover),
-        title: Text(productModel.name),
+        leading: Image.network(productModel.image,
+            width: 50, height: 50, fit: BoxFit.cover),
+        title: Text(productModel.title),
         trailing: IconButton(
           icon: const Icon(Icons.delete_forever_rounded),
-          color:  Colors.red,
+          color: Colors.red,
           onPressed: remove,
         ),
       ),
     );
   }
-  }
+}

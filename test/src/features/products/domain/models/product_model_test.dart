@@ -10,7 +10,7 @@ void main() {
   test('Test Product Model', () {
     expect(productModel, isA<ProductModel>());
     expect(productModel.id, 1);
-    expect(productModel.name,
+    expect(productModel.title,
         "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops");
     expect(productModel.price, 109.95);
     expect(productModel.description,
@@ -23,13 +23,13 @@ void main() {
 
   test('Test Product Model fromJson method', () {
     final productModel = ProductModel.fromJson(
-     jsonDecode(
+      jsonDecode(
         fixture(name: 'product_model.json'),
       ),
     );
     expect(productModel, isA<ProductModel>());
     expect(productModel.id, 1);
-    expect(productModel.name,
+    expect(productModel.title,
         "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops");
     expect(productModel.price, 109.95);
     expect(productModel.description,
