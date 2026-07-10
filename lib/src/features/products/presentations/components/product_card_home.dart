@@ -32,11 +32,16 @@ class ProductCardHome extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: height * 0.4,
-              child: Image.network(
-                productModel.image,
-                fit: BoxFit.fill,
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(ApplicationStylesConstants.spacing8Sp),
+                  topRight: Radius.circular(ApplicationStylesConstants.spacing8Sp),
+                ),
+                child: Image.network(
+                  productModel.image,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             Padding(
@@ -44,11 +49,12 @@ class ProductCardHome extends StatelessWidget {
                     const EdgeInsets.all(ApplicationStylesConstants.spacing4Sp),
                 child: Text(
                   productModel.title,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.start,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
                     color: ApplicationColors.black,
                   ),
                 )),
@@ -70,7 +76,7 @@ class ProductCardHome extends StatelessWidget {
                             child: SizedBox(
                                 width: ApplicationStylesConstants.spacing4Sp)),
                         TextSpan(
-                          text: productModel.price.toString(),
+                          text: productModel.price.toStringAsFixed(2),
                           style: textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                               fontSize: 24,
@@ -83,8 +89,8 @@ class ProductCardHome extends StatelessWidget {
                 GestureDetector(
                   onTap: addToPurchaseList,
                   child: Container(
-                    width: 60,
-                    height: 30,
+                    width: 36,
+                    height: 28,
                     decoration: BoxDecoration(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(15.0)),
@@ -97,6 +103,7 @@ class ProductCardHome extends StatelessWidget {
                       child: Icon(
                         Icons.add_shopping_cart,
                         color: ApplicationColors.black36,
+                        size: 16,
                       ),
                     ),
                   ),

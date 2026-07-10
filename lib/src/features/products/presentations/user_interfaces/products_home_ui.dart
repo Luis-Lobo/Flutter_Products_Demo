@@ -16,51 +16,66 @@ class ProductsHomeUI extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     final cubit = context.read<ProductsCubit>();
     final l10n = AppLocalizations.of(context)!;
     final CarouselSliderController controller = CarouselSliderController();
     final ValueNotifier<int> currentUrl = ValueNotifier<int>(0);
+
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, currentState) {
-      if (currentState.addProductInCartList == true) {
-        ProductSnackBar.showAdditionSnackBar(context: context, message: l10n.addToCart);
-        cubit.resetStatesSnackBar();
-      }
-    }, builder: (context, state) {
-      return Flex(
-        direction: Axis.vertical,
-        children: [
-          Column(
-            children: [
-              const SizedBox(height: ApplicationStylesConstants.spacing20Sp),
-              ProductCarousel(
-                imagesUrls: state.imagesUrls,
-                controller: controller,
-                currentUrl: currentUrl,
+        if (currentState.addProductInCartList == true) {
+          ProductSnackBar.showAdditionSnackBar(context: context, message: l10n.addToCart);
+          cubit.resetStatesSnackBar();
+        }
+      },
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: ApplicationStylesConstants.spacing20Sp),
+            ProductCarousel(
+              imagesUrls: state.imagesUrls,
+              controller: controller,
+              currentUrl: currentUrl,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              child: Text(
+                l10n.shop,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
-              SizedBox(
-                height: height * 0.55,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: state.products.length,
-                    itemBuilder: (BuildContext ctx, index) {
-                      final product = state.products.elementAt(index);
-                      return SizedBox(
-                        width: width * 0.7,
-                        child: ProductCardHome(
-                          productModel: product,
-                          onTap: () => context.go('/productDetails', extra: product),
-                          addToPurchaseList: () => cubit.addToCart(product: product, cartList: state.cartList),
-                        ),
-                      );
-                    }),
+            ),
+            GridView.builder(
+              shrinkWrap: true, 
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0, 
+                childAspectRatio: 0.75,
               ),
-            ],
-          ),
-        ],
-      );
-    });
+              itemCount: state.products.length,
+              itemBuilder: (BuildContext ctx, index) {
+                final product = state.products.elementAt(index);
+                return ProductCardHome(
+                  productModel: product,
+                  onTap: () => context.go('/productDetails', extra: product),
+                  addToPurchaseList: () => cubit.addToCart(
+                    product: product, 
+                    cartList: state.cartList,
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+          ],
+        );
+      },
+    );
   }
 }
