@@ -21,7 +21,7 @@ class ProductSearchUI extends HookWidget {
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, currentState) {
       if (currentState.removeProductInCartList == true) {
-        ProductSnackBar.showRemoveSnackBar(context: context, message: l10n.removeToCard);
+        ProductSnackBar.showRemoveSnackBar(context: context, message: l10n.removeFromCard);
         cubit.resetStatesSnackBar();
       }
     }, builder: (context, state) {

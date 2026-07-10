@@ -139,7 +139,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'We have sent a password recovery link to your email. Please check your inbox and follow the instructions to reset your password.';
 
   @override
-  String get removeToCard => 'Removed from shopping cart';
+  String get removeFromCard => 'Removed from shopping cart';
 
   @override
   String get search => 'SEARCH';
