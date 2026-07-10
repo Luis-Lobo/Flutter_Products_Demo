@@ -96,6 +96,7 @@ import 'package:flutter_products_demo/src/core/config/app_config_state.dart';
             return MaterialApp.router(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
+              locale: state.locale,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               theme: ThemeData(

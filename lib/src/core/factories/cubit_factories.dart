@@ -10,7 +10,7 @@ import 'package:flutter_products_demo/src/core/storage/application_storage_impl.
 import 'package:flutter_products_demo/src/features/authentication/data/authentication_repository_impl.dart';
 import 'package:flutter_products_demo/src/features/authentication/domain/use_cases/authentication_use_case_impl.dart';
 import 'package:flutter_products_demo/src/features/authentication/presentations/components/business_components/authentication_cubit.dart';
-import 'package:flutter_products_demo/src/features/products/data/products_repositoyy_impl.dart';
+import 'package:flutter_products_demo/src/features/products/data/products_repository_impl.dart';
 import 'package:flutter_products_demo/src/features/products/domain/use_cases/use_cases_products_impl.dart';
 import 'package:flutter_products_demo/src/features/products/presentations/bussiness_components/products_cubit.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -35,8 +35,8 @@ class CubitFactories {
   static ApplicationHttpClient _getClient() {
     final dio = Dio(
       BaseOptions(
-        //baseUrl: "https://fakestoreapi.com",
-        baseUrl: 'http://192.168.0.21:3430/apiDemo',
+        baseUrl: "https://fakestoreapi.com",
+        //baseUrl: 'http://192.168.0.21:3430/apiDemo',
         connectTimeout: const Duration(milliseconds: 30000),
         receiveTimeout: const Duration(milliseconds: 30000),
         sendTimeout: const Duration(milliseconds: 30000),
