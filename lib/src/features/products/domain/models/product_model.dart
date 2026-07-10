@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_products_demo/src/features/products/domain/models/rating_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'product_model.g.dart';
@@ -8,16 +9,16 @@ class ProductModel extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'name')
-  final String name;
+  @JsonKey(name: 'title')
+  final String title;
 
   @JsonKey(name: 'description')
   final String description;
 
   @JsonKey(name: 'price')
-  final String price;
+  final double price;
 
-  @JsonKey(name: 'quantity')
+  @JsonKey(name: 'quantity', defaultValue: 1)
   final int quantity;
 
   @JsonKey(name: 'category')
@@ -27,12 +28,12 @@ class ProductModel extends Equatable {
   final String image;
 
   @JsonKey(name: 'rating')
-  //final RatingModel rating;
-  final String rating;
+  final RatingModel rating;
+  //final String rating;
 
   const ProductModel({
     required this.id,
-    required this.name,
+    required this.title,
     required this.description,
     required this.price,
     required this.quantity,
@@ -41,10 +42,12 @@ class ProductModel extends Equatable {
     required this.rating,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 
   @override
-  List<Object?> get props => [id, name, description, price, quantity, category, image, rating];
+  List<Object?> get props =>
+      [id, title, description, price, quantity, category, image, rating];
 }

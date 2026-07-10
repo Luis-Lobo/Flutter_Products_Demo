@@ -26,7 +26,8 @@ class ProductCardHome extends StatelessWidget {
       child: Card(
         color: ApplicationColors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(ApplicationStylesConstants.spacing8Sp),
+          borderRadius:
+              BorderRadius.circular(ApplicationStylesConstants.spacing8Sp),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,9 +40,10 @@ class ProductCardHome extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(ApplicationStylesConstants.spacing4Sp),
+                padding:
+                    const EdgeInsets.all(ApplicationStylesConstants.spacing4Sp),
                 child: Text(
-                  productModel.name,
+                  productModel.title,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   style: textTheme.titleMedium?.copyWith(
@@ -64,10 +66,15 @@ class ProductCardHome extends StatelessWidget {
                             color: ApplicationColors.black,
                           ),
                         ),
-                        const WidgetSpan(child: SizedBox(width: ApplicationStylesConstants.spacing4Sp)),
+                        const WidgetSpan(
+                            child: SizedBox(
+                                width: ApplicationStylesConstants.spacing4Sp)),
                         TextSpan(
                           text: productModel.price.toString(),
-                          style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700, fontSize: 24, color: ApplicationColors.red),
+                          style: textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                              color: ApplicationColors.red),
                         ),
                       ],
                     ),
@@ -79,12 +86,12 @@ class ProductCardHome extends StatelessWidget {
                     width: 60,
                     height: 30,
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15.0)),
                       border: Border.all(
                         color: ApplicationColors.black36,
                         width: 2.0,
                       ),
-                      
                     ),
                     child: const Center(
                       child: Icon(

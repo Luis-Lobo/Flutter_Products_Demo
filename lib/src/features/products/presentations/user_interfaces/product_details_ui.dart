@@ -29,15 +29,17 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
     final textTheme = Theme.of(context).textTheme;
     final height = MediaQuery.of(context).size.height;
     final cubit = context.read<ProductsCubit>();
-    return BlocConsumer<ProductsCubit, ProductsState>(listener: (context, currentState) {
+    return BlocConsumer<ProductsCubit, ProductsState>(
+        listener: (context, currentState) {
       if (currentState.addProductInCartList == true) {
-        ProductSnackBar.showAdditionSnackBar(context: context, message: l10n.addToCart);
+        ProductSnackBar.showAdditionSnackBar(
+            context: context, message: l10n.addToCart);
         cubit.resetStatesSnackBar();
       }
     }, builder: (context, state) {
       return Scaffold(
         appBar: ProductsBar(
-          title: widget.productModel.name,
+          title: widget.productModel.title,
           onPop: () => context.pop(),
         ),
         body: Padding(
@@ -77,7 +79,8 @@ class _ProductDetailsUIState extends State<ProductDetailsUI> {
                 padding: const EdgeInsets.all(8.0),
                 child: ProductButton(
                   textButton: l10n.add,
-                  onPressed: () => cubit.addToCart(product: widget.productModel, cartList: state.cartList),
+                  onPressed: () => cubit.addToCart(
+                      product: widget.productModel, cartList: state.cartList),
                 ),
               ),
             ),
