@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_products_demo/src/core/components/language_button.dart';
+import 'package:flutter_products_demo/src/core/components/language_picker.dart';
 import 'package:flutter_products_demo/src/core/l10n/app_localizations.dart';
 import 'package:flutter_products_demo/src/core/theme/application_colors.dart';
 import 'package:flutter_products_demo/src/features/authentication/domain/model/user_model.dart';
@@ -24,7 +26,7 @@ class ProductDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-                child: ListView(
+              child: ListView(
               shrinkWrap: false,
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
@@ -39,7 +41,10 @@ class ProductDrawer extends StatelessWidget {
                       ),
                     ),
                     child: CircleAvatar(
-                      backgroundImage: userModel.photoUrl != null && userModel.photoUrl!.isNotEmpty ? NetworkImage(userModel.photoUrl!) : null,
+                      backgroundImage: userModel.photoUrl != null &&
+                              userModel.photoUrl!.isNotEmpty
+                          ? NetworkImage(userModel.photoUrl!)
+                          : null,
                       backgroundColor: ApplicationColors.darkBlue,
                       radius: 48,
                       child: const Icon(Icons.person),
@@ -49,15 +54,26 @@ class ProductDrawer extends StatelessWidget {
                 ListTile(
                   title: Text(
                     "${l10n.name} ${userModel.name}",
-                    style: textTheme.titleMedium?.copyWith(color: ApplicationColors.white),
+                    style: textTheme.titleMedium
+                        ?.copyWith(color: ApplicationColors.white),
                   ),
                 ),
                 ListTile(
                   title: Text(
                     "${l10n.email} ${userModel.email}",
-                    style: textTheme.titleMedium?.copyWith(color: ApplicationColors.white),
+                    style: textTheme.titleMedium
+                        ?.copyWith(color: ApplicationColors.white),
                   ),
                 ),
+                ListTile(
+                  //leading: const Icon(Icons.language, color: Colors.white),
+                  title: Text(
+                    AppLocalizations.of(context)!
+                        .welcome, 
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+                const ListTile(title: LanguagePicker()),
                 const Divider(
                   color: ApplicationColors.white,
                   indent: 16,

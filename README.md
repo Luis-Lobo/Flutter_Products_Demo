@@ -22,6 +22,8 @@ Welcome to the Fake Shopping App! This application is designed to make it easy t
 
 - **Profile Drawer**: A simple customizable profile drawer with account details and logout.
 
+- **Languagues**: Dynamic language switching support for English, French, and Portuguese.
+
 ## Technical informations
 
 Fetch Datas from free Api: https://fakestoreapi.com,

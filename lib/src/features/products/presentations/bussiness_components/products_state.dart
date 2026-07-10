@@ -50,7 +50,8 @@ class ProductsState extends Equatable {
         filterList: filterList ?? this.filterList,
         totalPurchasePrice: totalPurchasePrice ?? this.totalPurchasePrice,
         addProductInCartList: addProductInCartList ?? this.addProductInCartList,
-        removeProductInCartList: removeProductInCartList ?? this.removeProductInCartList,
+        removeProductInCartList:
+            removeProductInCartList ?? this.removeProductInCartList,
       );
 
   bool get isHomePage => uiPages == ProductUIPages.homePage;
@@ -78,13 +79,14 @@ enum ProductUIState {
   success,
   error,
   addedToCart,
-  removedToCart;
+  removedFromCart;
 
   bool get isSuccess => this == ProductUIState.success;
 
   bool get hasError => this == ProductUIState.error;
 
-  bool get isLoading => this == ProductUIState.loading || this == ProductUIState.initial;
+  bool get isLoading =>
+      this == ProductUIState.loading || this == ProductUIState.initial;
 }
 
 enum ProductUIPages { homePage, cartPage, searchPage, paymentPage }

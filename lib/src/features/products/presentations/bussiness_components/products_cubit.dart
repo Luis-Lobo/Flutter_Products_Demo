@@ -58,7 +58,8 @@ class ProductsCubit extends Cubit<ProductsState> {
     ));
   }
 
-  void addToCart({required ProductModel product, required List<ProductModel> cartList}) {
+  void addToCart(
+      {required ProductModel product, required List<ProductModel> cartList}) {
     List<ProductModel> updateList = List.from(cartList);
     updateList.add(product);
     calculatePurchasePrice(updateList: updateList);
@@ -69,12 +70,13 @@ class ProductsCubit extends Cubit<ProductsState> {
     ));
   }
 
-  void removeToCart({required ProductModel product, required List<ProductModel> cartList}) {
+  void removeToCart(
+      {required ProductModel product, required List<ProductModel> cartList}) {
     List<ProductModel> updateList = List.from(cartList);
     updateList.remove(product);
     calculatePurchasePrice(updateList: updateList);
     emit(state.copyWith(
-      uiState: ProductUIState.removedToCart,
+      uiState: ProductUIState.removedFromCart,
       cartList: updateList,
       removeProductInCartList: true,
     ));
@@ -103,7 +105,10 @@ class ProductsCubit extends Cubit<ProductsState> {
         filterList: state.products,
       ));
     } else {
-      List<ProductModel> filterList = state.products.where((model) => model.name.toLowerCase().contains(query.toLowerCase())).toList();
+      List<ProductModel> filterList = state.products
+          .where(
+              (model) => model.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
 
       emit(state.copyWith(
         filterList: filterList,
